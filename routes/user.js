@@ -4,6 +4,7 @@ const { asyncHandler, csrfProtection } = require('./utils');
 const { User } = require('../db/models')
 const {check, validationResult } = require('express-validator');
 const { loginUser, logoutUser } = require('../auth');
+const bcrypt = require('bcryptjs')
 
 /* GET users listing. */
 router.get('/signup', csrfProtection, asyncHandler(async(req, res, next) => {
