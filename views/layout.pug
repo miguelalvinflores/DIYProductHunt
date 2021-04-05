@@ -2,7 +2,16 @@ doctype html
 html
   head
       block head
-        title="DIY Product Hunt"
+        title DIY #{title}
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
+    nav
+      a(href="/") DIY Product Hunt 
+      a(href="/categories") Categories
+    if locals.authenticated
+      a(href="/users/#{user.id}"): span Welcome #{user.firstName}
+      form(method="post" action="/users/logout"): button(type="submit") Log Out 
+    else
+      a(href="/users/login") Log In 
+      a(href="/users/signup") Sign Up
     block content
