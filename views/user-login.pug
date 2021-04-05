@@ -1,0 +1,13 @@
+extends layout.pug
+include utils.pug
+block content
+    +validationErrorsSummary(errors)
+    form(method="post" action="/users/login")
+        input(type="hidden" value=csrfToken name="_csrf")
+        +field("User Name", "userName", userName)
+        +field("Password", "password", null, "password")
+        div
+            button(type="submit") Log In
+            a(href="/") Cancel
+    div
+        a(href="/users/login") Don't Have An Account?
