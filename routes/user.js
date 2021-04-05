@@ -73,8 +73,50 @@ const userValidators = [
         throw new Error('Confirm Password does not match Password');
       }
       return true;
-    }),
-]
+    })
+];
 
-router.post('')
+
+router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, res) => {
+  const {firstName, lastName, userName, emailAddress, profilePicURL, password} = req.body;
+
+  const user = User.build({
+    firstName,
+    lastName,
+    userName,
+    emailAddress,
+    profilePicURL
+  });
+
+  const validatorErrors = validationResult(req);
+  console.log("Verrors", validatorErrors);
+
+  if(validatorErrors.isEmpty()) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.hashedPW = hashedPassword;
+    await user.save();
+    loginUser(req, res, user);
+    res.redirect('/');
+  } else {
+    const errors = validatorErrors.array().map((error) => {
+      return error.msg
+
+    });
+    console.log("errors", errors);
+    res.render('user-signup', {
+      title: "Sign Up",
+      user,
+      errors,
+      csrfToken: req.csrfToken()
+    })
+  }
+
+}))
+
+
+
+
+
+
+
 module.exports = router;
