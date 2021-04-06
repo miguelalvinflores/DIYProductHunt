@@ -1,0 +1,16 @@
+extends layout.pug
+block content
+    div 
+        div
+            div
+                a(href=`/products/${product.id}`): img(src=`${product.photoURL}`)
+        div
+            div
+                span=product.name  
+            div
+                span=product.summary 
+    div
+        div
+            div
+                p=product.description
+        div
