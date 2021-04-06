@@ -3,15 +3,15 @@ html
   head
       block head
         title DIY #{title}
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/index.css')
   body
     nav
-      a(href="/") DIY Product Hunt 
+      a(href="/") DIY Product Hunt
       a(href="/categories") Categories
     if locals.authenticated
       a(href="/users/#{user.id}"): span Welcome #{user.firstName}
-      form(method="post" action="/users/logout"): button(type="submit") Log Out 
+      form(method="post" action="/users/logout"): button(type="submit") Log Out
     else
-      a(href="/users/login") Log In 
+      a(href="/users/login") Log In
       a(href="/users/signup") Sign Up
     block content

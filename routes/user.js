@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs')
 /* GET users listing. */
 router.get('/signup', csrfProtection, asyncHandler(async(req, res, next) => {
   const user = await User.build();
-  res.render("user-signup", {
+  res.render("modal", {
     title: "Sign Up",
     user,
     csrfToken: req.csrfToken()
