@@ -1,18 +1,22 @@
 extends layout.pug
 include utils.pug
 block content
-    +validationErrorsSummary(errors)
-    form(method="post" action="/users/signup")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        +field("First Name", "firstName", user.firstName)
-        +field("Last Name", "lastName", user.lastName)
-        +field("Username", "userName", user.userName)
-        +field("Email Address", "emailAddress", user.emailAddress, "email")
-        +field("Profile Pic URL", "profilePicURL", user.profilePicURL)
-        +field("Password", "password", null, "password")
-        +field("Confirm Password", "confirmPassword", null, "password")
-        div
-            button(type="submit") Sign Up
-            a(href="/") Cancel
-    div
-        a(href="/users/login") Already Have An Account????
+    div.modal#myModal
+        div.modal-content
+            img(scr='./public/images/logo.png' style='width:100px; height:100px;')
+            div#signup-errors
+                +validationErrorsSummary(errors)
+                form(method="post" action="/users/signup")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    +field("First Name", "firstName", user.firstName)
+                    +field("Last Name", "lastName", user.lastName)
+                    +field("Username", "userName", user.userName)
+                    +field("Email Address", "emailAddress", user.emailAddress, "email")
+                    +field("Profile Pic URL", "profilePicURL", user.profilePicURL)
+                    +field("Password", "password", null, "password")
+                    +field("Confirm Password", "confirmPassword", null, "password")
+                    div
+                        button(type="submit") Sign Up
+                        a(href="/") Cancel
+                div
+                    a(href="/users/login") Already Have An Account?
