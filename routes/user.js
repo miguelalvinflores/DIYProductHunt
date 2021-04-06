@@ -56,7 +56,7 @@ const userValidators = [
   check("profilePicURL")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a image URL")
-    .matches(/^.+[jpg png svg]$/)
+    .matches(/^.+[jpe?g png svg]$/)
     .withMessage("Must be a link to a valid file format (.jpg, .png, .svg)."),
   check('password')
     .exists({ checkFalsy: true })
@@ -91,7 +91,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, 
   });
 
   const validatorErrors = validationResult(req);
-  console.log("Verrors", validatorErrors);
+  // console.log("Verrors", validatorErrors);
 
   if(validatorErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10);
