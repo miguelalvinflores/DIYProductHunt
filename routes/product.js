@@ -32,17 +32,6 @@ const productValidators = [
     check("description")
         .exists({ checkFalsy: true })
         .withMessage('Please provide a product description.'),
-    check("userId")
-        .custom((value) => {
-            return User.findOne({ where: {id: value}})
-                .then((user) => {
-                    if(!user){
-                        return Promise.reject('Cannot create Product launch without associated account, please sign in, or create an account')
-                    }
-                    return true;
-                })
-        })
-
 ]
 
 router.post('/new-product', productValidators, restoreUser, requireAuth, csrfProtection, asyncHandler( async( req, res) => {
@@ -65,6 +54,7 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
     if(validatorErrors.isEmpty()) {
         if (res.locals.authenticated) {
             const { userId } = req.session.auth
+            console.log('userId:', userId)
             product.userId = userId
             const newProduct = await product.save();
             console.log(newProduct)
