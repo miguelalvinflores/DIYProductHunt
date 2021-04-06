@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { asyncHandler, csrfProtection } = require('./utils');
-const { User } = require('../db/models')
+const { User, Product } = require('../db/models')
 const {check, validationResult } = require('express-validator');
 const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
 const bcrypt = require('bcryptjs')
@@ -9,13 +9,12 @@ const bcrypt = require('bcryptjs')
 router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10)
   const user = await User.findOne({
-    where: { id: product.userId },
+    where: { id},
     include: {
-      model: Product,
-      as: "products"
+      model: Product
     }
   });
-  res.render('user-profile', { title: `${user.name}`, user })
+  res.render('user-profile', { title: `${user.firstName}`, user })
 }))
 
 /* GET users listing. */

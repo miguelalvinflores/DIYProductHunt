@@ -14,7 +14,7 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10)
     const product = await Product.findOne({ where: { id } })
     const user = await User.findOne({where: { id: product.userId }});
-    res.render('product-listing', { title: `${product.name}`, product })
+    res.render('product-listing', { title: `${product.name}`, product, user })
 }))
 
 router.get('/new-product', csrfProtection, restoreUser, requireAuth, asyncHandler( async(req, res) => {
