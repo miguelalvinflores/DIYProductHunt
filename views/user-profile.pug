@@ -5,24 +5,30 @@ block content
 
         div
             div
-                a(href=`/products/${product.id}`): img(src=`${product.photoURL}`)
+                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`)
         div
             div
-                span=product.name
+                span #{user.firstName} #{user.lastName}
             div
-                span=product.summary
+                p Contact Creator:
+                span #{user.emailAddress}
+            div
+                but
     //- Bottom Half
     div
-        //- Product Info/ Discussion
+        //- Created products
+        div
+
+        //- Upvotes on any Product
         div
             div
-                p=product.description
+
             div
                 //- comments
         //- Creator Info
         div
             div
-                div
-                    a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`)
+                span Joined: #{user.createdAt}
+
                 div
                     span #{user.firstName} #{user.lastName}

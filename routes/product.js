@@ -13,6 +13,7 @@ router.get('/', restoreUser, asyncHandler( async(req, res) => {
 router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10)
     const product = await Product.findOne({ where: { id } })
+    const user = await User.findOne({where: { id: product.userId }});
     res.render('product-listing', { title: `${product.name}`, product })
 }))
 
@@ -21,6 +22,7 @@ router.get('/new-product', csrfProtection, restoreUser, requireAuth, asyncHandle
     res.render('new-product', {
         title: "Launch New Product",
         product,
+        user,
         csrfToken: req.csrfToken()
     })
 }));
