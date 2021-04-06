@@ -10,6 +10,7 @@ html
       a(href="/categories") Categories
     if locals.authenticated
       a(href="/users/#{user.id}"): span Welcome #{user.firstName}
+      a(href="/products/new-product"): span Add Product
       form(method="post" action="/users/logout"): button(type="submit") Log Out 
     else
       a(href="/users/login") Log In 

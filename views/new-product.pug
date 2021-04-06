@@ -1,0 +1,13 @@
+extends layout.pug
+include utils.pug
+block content
+    +validationErrorsSummary(errors)
+    form(method="post" action="/products/new-product")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        +field("Product Name", "name", product.name)
+        +field("Photo URL", "photoURL", product.photoURL)
+        +field("Summary", "summary", product.summary)
+        +field("Description", "description", product.description)
+        div
+            button(type="submit") Launch Product
+            a(href="/") Cancel
