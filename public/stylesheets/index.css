@@ -103,6 +103,7 @@ body {
     font-size: size 14px;
     color: #564d4a;
     border: solid 1px #564d4a;
+    border-radius: 5px;
     min-width: 50%;
     margin-bottom: 1em;
 }
@@ -120,7 +121,7 @@ button {
     font-size: 18px;
     color: #5B2333;
     background-color: #F7F4F3;
-    border-radius: 3px;
+    border-radius: 5px;
     margin: 10px 10px;
     padding: 3%;
     max-width: 150px;
