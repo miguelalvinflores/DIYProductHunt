@@ -1,0 +1,16 @@
+extends layout.pug
+block head 
+    link(rel="stylesheet", href="/stylesheets/products.css")
+block content
+    if products && products.length > 0
+        each product in products
+         div.product-listing 
+            div.product-listing__image
+                div
+                    a(href=`/products/${product.id}`): img(src=`${product.photoURL}`).product-image
+            div.product-listing__info.product-info
+                div.product-info__name
+                    span=product.name  
+                div.product-info__summary
+                    span=product.summary                
+            div.product-listing__upvotes

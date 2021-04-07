@@ -1,0 +1,34 @@
+.product-listing {
+    display: flex;
+    justify-content: flex-start;
+    border: 2px solid #d31e0d;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 5px;
+    max-width: 60%;
+}
+
+.product-image {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* .product-listing__image {} */
+
+.product-listing__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-info__name {
+    font-weight: bold;
+    color: #564d4a;
+    font-size: 20px;
+}
+
+/* .product-info__summary {} */

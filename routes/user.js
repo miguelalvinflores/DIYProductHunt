@@ -1,10 +1,21 @@
 var express = require('express');
 var router = express.Router();
 const { asyncHandler, csrfProtection } = require('./utils');
-const { User } = require('../db/models')
+const { User, Product } = require('../db/models')
 const {check, validationResult } = require('express-validator');
-const { loginUser, logoutUser } = require('../auth');
+const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
 const bcrypt = require('bcryptjs')
+
+router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id, 10)
+  const user = await User.findOne({
+    where: { id},
+    include: {
+      model: Product
+    }
+  });
+  res.render('user-profile', { title: `${user.firstName}`, user })
+}))
 
 /* GET users listing. */
 router.get('/signup', csrfProtection, asyncHandler(async(req, res, next) => {
@@ -56,7 +67,7 @@ const userValidators = [
   check("profilePicURL")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a image URL")
-    .matches(/^.+[jpg png svg]$/)
+    .matches(/^.+[jpe?g png svg]$/)
     .withMessage("Must be a link to a valid file format (.jpg, .png, .svg)."),
   check('password')
     .exists({ checkFalsy: true })
@@ -91,7 +102,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, 
   });
 
   const validatorErrors = validationResult(req);
-  console.log("Verrors", validatorErrors);
+  // console.log("Verrors", validatorErrors);
 
   if(validatorErrors.isEmpty()) {
     const hashedPassword = await bcrypt.hash(password, 10);

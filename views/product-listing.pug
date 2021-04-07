@@ -1,0 +1,28 @@
+extends layout.pug
+block content
+    //- Product banner/ Top Half
+    div
+
+        div
+            div
+                a(href=`/products/${product.id}`): img(src=`${product.photoURL}`)
+        div
+            div
+                span=product.name
+            div
+                span=product.summary
+    //- Bottom Half
+    div
+        //- Product Info/ Discussion
+        div
+            div
+                p=product.description
+            div
+                //- comments
+        //- Creator Info
+        div
+            div
+                div
+                    a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`)
+                div
+                    span #{user.firstName} #{user.lastName}
