@@ -1,7 +1,25 @@
 extends layout.pug
+include utils.pug
 block head
     link(rel="stylesheet", href="/stylesheets/user-profile.css")
 block content
+    div.modal.hidden
+        div.modal-edit-profile
+            <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+            div#signup-errors
+                +validationErrorsSummary(errors)
+                form(method="post" action="/users/signup")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    +field("First Name", "firstName", user.firstName)
+                    +field("Last Name", "lastName", user.lastName)
+                    +field("Username", "userName", user.userName)
+                    +field("Email Address", "emailAddress", user.emailAddress, "email")
+                    +field("Profile Pic URL", "profilePicURL", user.profilePicURL)
+                    +field("Confirm Password", "password", null, "password")
+                    div
+                        button.edit-btn Edit Profile
+                        a(href="/") Cancel
+    +validationErrorsSummary(errors)
     div.profile
         div.profile-user
             div.profile-user__pic-container

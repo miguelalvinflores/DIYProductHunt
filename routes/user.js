@@ -6,7 +6,7 @@ const {check, validationResult } = require('express-validator');
 const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
 const bcrypt = require('bcryptjs')
 
-router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
+router.get('/:id(\\d+$\)', csrfProtection, restoreUser, asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10)
   const user = await User.findOne({
     where: { id},
@@ -15,7 +15,7 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
     }
   });
   const date = user.createdAt.toLocaleDateString(undefined)
-  res.render('user-profile', { title: `${user.firstName}`, user, date, req })
+  res.render('user-profile', { title: `${user.firstName}`, user, date, req, csrfToken: req.csrfToken() })
 }))
 
 /* GET users listing. */

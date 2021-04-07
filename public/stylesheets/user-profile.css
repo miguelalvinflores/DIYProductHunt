@@ -40,6 +40,25 @@
     margin: 5px;
 }
 
+.modal-edit-profile {
+    background-color: #fefefe;
+    position: relative;
+    bottom: 15%;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 425px;
+    height: 550px;
+    /* Could be more or less, depending on screen size */
+    /* justify-content: center;
+    align-items: center; */
+    overflow: auto;
+    /* Enable scroll if needed */
+    box-shadow: 2px 3px 4px #5b2333;
+    /* position: absolute; */
+}
+
 /* PRODUCTS */
 
 .profile-products {
@@ -59,6 +78,7 @@
     margin: 15px;
     margin-bottom: 50px;
 }
+
 .profile-products__table {
     width: 100%;
 }
@@ -67,7 +87,17 @@
     text-align: center;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+.profile-products__user-labels>span {
+    align-self: flex-end;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table__date {
+    text-align: center;
+}
 
 button {
     width: 150px;
