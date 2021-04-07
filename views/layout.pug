@@ -2,17 +2,25 @@ doctype html
 html
   head
       block head
-        title DIY #{title}
-        link(rel='stylesheet' href='/stylesheets/reset.css')
+        title #{title}
+        link(rel='icon' type='favicon' href='https://res.cloudinary.com/dbu0tmeuc/image/upload/v1617802070/favicon_ww2gmr.ico')
+        link(rel='stylesheet' href='/stylesheets/index.css')
+        link(rel='stylesheet' href= '/stylesheets/navbar.css')
   body
-    nav
-      a(href="/") DIY Product Hunt
-      a(href="/categories") Categories
-    if locals.authenticated
-      a(href=`/users/${user.id}`): span Welcome #{user.firstName}
-      a(href="/products/new-product"): span Add Product
-      form(method="post" action="/users/logout"): button(type="submit") Log Out
-    else
-      a(href="/users/login") Log In
-      a(href="/users/signup") Sign Up
+    header
+      img(class="nav-logo" src="https://res.cloudinary.com/dbu0tmeuc/image/upload/v1617804832/diy-logo_zpclwx.png" alt="logo")
+      nav
+        div.nav-wrapper
+          ul.right
+            li.search Search
+            li: a(href="/") Home
+            li: a(href='/categories') Categories
+            if locals.authenticated
+              li: a(href="/users/#{user.id}"): span Welcome #{user.firstName}
+              li: form(method="post" action="/users/logout"): button(type="submit") Log Out
+            else
+              li: a(href="/users/login") Login
+              li: a(href="/users/signup") Sign Up
+
+            li About
     block content

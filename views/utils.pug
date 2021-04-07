@@ -1,7 +1,7 @@
 mixin field(labelText, fieldName, fieldValue, fieldType="text")
     div
-        label(for=fieldName)=labelText
-        input(type=fieldType id=fieldName name=fieldName value=fieldValue required)
+        label(class="form-label" for=fieldName)=labelText
+        input(class="form-input" type=fieldType id=fieldName name=fieldName value=fieldValue required)
 
 
 mixin validationErrorsSummary(errors)

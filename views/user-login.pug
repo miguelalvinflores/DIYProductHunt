@@ -1,13 +1,17 @@
 extends layout.pug
 include utils.pug
 block content
-    +validationErrorsSummary(errors)
-    form(method="post" action="/users/login")
-        input(type="hidden" value=csrfToken name="_csrf")
-        +field("User Name", "userName", userName)
-        +field("Password", "password", null, "password")
-        div
-            button(type="submit") Log In
-            a(href="/") Cancel
-    div
-        a(href="/users/login") Don't Have An Account?
+    div.modal
+        .modal-login
+           <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+            div#signup-errors
+                +validationErrorsSummary(errors)
+                form(method="post" action="/users/login")
+                    input(type="hidden" value=csrfToken name="_csrf")
+                    +field("User Name", "userName", userName)
+                    +field("Password", "password", null, "password")
+                    div
+                        button(type="submit") Log In
+                        a(href="/") Cancel
+                div
+                    a(href="/users/login") Don't Have An Account?

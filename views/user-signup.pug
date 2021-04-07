@@ -1,18 +1,22 @@
 extends layout.pug
 include utils.pug
 block content
-    +validationErrorsSummary(errors)
-    form(method="post" action="/users/signup")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        +field("First Name", "firstName", user.firstName)
-        +field("Last Name", "lastName", user.lastName)
-        +field("Username", "userName", user.userName)
-        +field("Email Address", "emailAddress", user.emailAddress, "email")
-        +field("Profile Pic URL", "profilePicURL", user.profilePicURL)
-        +field("Password", "password", null, "password")
-        +field("Confirm Password", "confirmPassword", null, "password")
-        div
-            button(type="submit") Sign Up
-            a(href="/") Cancel
-    div
-        a(href="/users/login") Already Have An Account?
+    div.modal
+        div.modal-signUp
+           <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+            div#signup-errors
+                +validationErrorsSummary(errors)
+                form(method="post" action="/users/signup")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    +field("First Name", "firstName", user.firstName)
+                    +field("Last Name", "lastName", user.lastName)
+                    +field("Username", "userName", user.userName)
+                    +field("Email Address", "emailAddress", user.emailAddress, "email")
+                    +field("Profile Pic URL", "profilePicURL", user.profilePicURL)
+                    +field("Password", "password", null, "password")
+                    +field("Confirm Password", "confirmPassword", null, "password")
+                    div
+                        button(type="submit") Sign Up
+                        a(href="/") Cancel
+                div
+                    a(href="/users/login") Already Have An Account?
