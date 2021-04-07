@@ -1,6 +1,6 @@
 extends layout.pug
 block head
-    link(rel="stylesheet", href="/stylesheets/user-profile.css")    
+    link(rel="stylesheet", href="/stylesheets/user-profile.css")
 block content
     div.profile
         div.profile-user
@@ -13,12 +13,24 @@ block content
             div.profile-user__joinday
                 span Joined: 🎂 #{date}
         div.profile-products
-            if req.session.auth && req.session.auth.userId === user.id 
+            if req.session.auth && req.session.auth.userId === user.id
                 div.profile-products__user-labels
-                    span Your Products 
-                    a(href=`/products/new`): button Create Product 
-            else 
+                    span Your Products
+                    a(href=`/products/new`): button Create Product
+            else
                 div.profile-products__guest-labels
                     span #{user.firstName}'s Products
-
-        div.profile-delete
+            div.profile-products__table-container
+                table.profile-products__table
+                    thead
+                        tr.profile-products__table__row-head
+                            th Product Name
+                            th Created On
+                    tbody
+                        each product in user.Products
+                            tr.profile-products__table__row-data
+                                td: a(href=`/products/${product.id}`) #{product.name}
+                                td.table__date #{product.createdAt.toLocaleDateString(undefined)}
+        if req.session.auth && req.session.auth.userId === user.id
+            div.profile-delete
+                a(href=`/users/${user.id}/delete`): button Delete Profile

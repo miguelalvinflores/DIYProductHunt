@@ -3,6 +3,7 @@
     left: 10%;
     top: 100px;
     display: flex;
+    justify-content: space-around;
     flex-direction: row;
     width: 80%;
     background-color: white;
@@ -39,12 +40,43 @@
     margin: 5px;
 }
 
+/* PRODUCTS */
+
 .profile-products {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    width: 35%;
 }
 
 .profile-products__user-labels {
     display: flex;
     justify-content: space-between;
+}
+
+.profile-products__table-container {
+    border: 3px solid;
+    margin: 15px;
+    margin-bottom: 50px;
+}
+.profile-products__table {
+    width: 100%;
+}
+
+.profile-products__table-row {
+    text-align: center;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+button {
+    width: 150px;
+}
+
+/* DELETE  */
+
+.profile-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
