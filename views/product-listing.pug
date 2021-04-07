@@ -1,28 +1,36 @@
 extends layout.pug
+block head
+    link(rel="stylesheet", href="/stylesheets/products.css")
 block content
     //- Product banner/ Top Half
-    div
+    div.product-detail
+        div.product-listing__detail
+            div.product-listing__left
+                div.product-listing__image
+                    div
+                        a(href=`/products/${product.id}`): img(src=`${product.photoURL}`).product-image
+                div.product-listing__info
+                    div.product-info
+                        div.product-info__name
+                            span=product.name
+                        div.product-info__creator
+                            span Created By:
+                                a(href=`/users/${product.userId}`)   #{user.firstName} #{user.lastName}
+                    div
+                        div.product-info__description
+                            p=product.description
+            div.product-listing__right
+                div.product-listing__buttons
+                    //- CREATE UPVOTE BUTTON HERE
 
-        div
+        div.user-info
             div
-                a(href=`/products/${product.id}`): img(src=`${product.photoURL}`)
-        div
-            div
-                span=product.name
-            div
-                span=product.summary
+                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).user-info__pic
+            div.user-info__name
+                span #{user.firstName} #{user.lastName}
+
     //- Bottom Half
     div
         //- Product Info/ Discussion
-        div
-            div
-                p=product.description
-            div
-                //- comments
         //- Creator Info
         div
-            div
-                div
-                    a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`)
-                div
-                    span #{user.firstName} #{user.lastName}
