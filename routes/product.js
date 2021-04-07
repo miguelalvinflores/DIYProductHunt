@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator');
 const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
 
 router.get('/', restoreUser, asyncHandler( async(req, res) => {
-    const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit: 10})
+    const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit: 10, include: User})
     res.render('products', { title: 'Products', products})
 }))
 

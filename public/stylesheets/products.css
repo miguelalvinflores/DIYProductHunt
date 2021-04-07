@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+.product-list {
+    position: relative;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .product-listing {
     display: flex;
     justify-content: flex-start;
@@ -7,7 +15,14 @@
     border-radius: 15px;
     padding: 5px;
     margin: 5px;
-    max-width: 60%;
+    width: 60%;
+}
+
+.product-listing__buttons {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-self: start;
 }
 
 .product-image {
@@ -15,8 +30,6 @@
     height: auto;
     border-radius: 8px;
 }
-
-/* .product-listing__image {} */
 
 /* .product-listing__image {} */
 
