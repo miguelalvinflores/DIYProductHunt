@@ -15,7 +15,7 @@ block content
                     +field("Photo URL", "photoURL", product.photoURL)
                     +field("Summary", "summary", product.summary)
                     label(class="form-label" for='description') Full Description
-                    textarea(id='create-description' class="form-input" id='description' name='description' value=product.description)
+                    textarea(class="form-input" id='description' name='description' value=product.description)
                     div
                         button(type="submit") Launch!
-                        a(href=`/users/${user.id}`) Cancel
+                a(href=`/users/${user.id}`) Cancel
