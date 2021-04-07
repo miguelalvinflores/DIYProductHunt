@@ -1,34 +1,24 @@
 extends layout.pug
+block head
+    link(rel="stylesheet", href="/stylesheets/user-profile.css")    
 block content
-    //- Product banner/ Top Half
-    div
-
-        div
-            div
-                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`)
-        div
-            div
+    div.profile
+        div.profile-user
+            div.profile-user__pic-container
+                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).profile-user__pic
+            div.profile-user__name
                 span #{user.firstName} #{user.lastName}
-            div
-                p Contact Creator:
-                span #{user.emailAddress}
-            div
-                but
-    //- Bottom Half
-    div
-        //- Created products
-        div
+            div.profile-user__contact
+                span Contact Creator: #{user.emailAddress}
+            div.profile-user__joinday
+                span Joined: 🎂 #{date}
+        div.profile-products
+            if req.session.auth && req.session.auth.userId === user.id 
+                div.profile-products__user-labels
+                    span Your Products 
+                    a(href=`/products/new`): button Create Product 
+            else 
+                div.profile-products__guest-labels
+                    span #{user.firstName}'s Products
 
-        //- Upvotes on any Product
-        div
-            div
-
-            div
-                //- comments
-        //- Creator Info
-        div
-            div
-                span Joined: #{user.createdAt}
-
-                div
-                    span #{user.firstName} #{user.lastName}
+        div.profile-delete

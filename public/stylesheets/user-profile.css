@@ -1,0 +1,50 @@
+.profile {
+    position: relative;
+    left: 10%;
+    top: 100px;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    background-color: white;
+}
+
+.profile-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.profile-user__pic {
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: auto;
+    margin: 15px;
+    width: 200px;
+    /* width of container */
+    height: 200px;
+    /* height of container */
+    object-fit: cover;
+}
+
+.profile-user__name {
+    margin: 5px;
+}
+
+.profile-user__contact {
+    margin: 5px;
+}
+
+.profile-user__joinday {
+    margin: 5px;
+}
+
+.profile-products {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-products__user-labels {
+    display: flex;
+    justify-content: space-between;
+}

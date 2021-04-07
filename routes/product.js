@@ -4,6 +4,7 @@ const { asyncHandler, csrfProtection } = require('./utils');
 const { User, Product } = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
+const {Sequelize} = require('sequelize')
 
 router.get('/', restoreUser, asyncHandler( async(req, res) => {
     const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit: 10, include: User})
@@ -14,7 +15,9 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10)
     const product = await Product.findOne({ where: { id } })
     const user = await User.findOne({where: { id: product.userId }});
-    res.render('product-listing', { title: `${product.name}`, product, user })
+    const userProducts = await Product.findAndCountAll({where: { userId: product.userId }})
+    console.log(userProducts)
+    res.render('product-listing', { title: `${product.name}`, product, user, userProducts })
 }))
 
 router.get('/new-product', csrfProtection, restoreUser, requireAuth, asyncHandler( async(req, res) => {

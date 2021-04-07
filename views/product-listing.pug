@@ -23,11 +23,14 @@ block content
                 div.product-listing__buttons
                     //- CREATE UPVOTE BUTTON HERE
 
-        div.user-info
-            div
-                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).user-info__pic
-            div.user-info__name
-                span #{user.firstName} #{user.lastName}
+        div.user
+            div.user__pic-container
+                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).user__pic
+            div.user-info
+                div.user-info__name
+                    span #{user.firstName} #{user.lastName}
+                div.user-info__stats 
+                    span Products Created: #{userProducts.count}
 
     //- Bottom Half
     div

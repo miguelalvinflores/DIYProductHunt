@@ -14,7 +14,8 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
       model: Product
     }
   });
-  res.render('user-profile', { title: `${user.firstName}`, user })
+  const date = user.createdAt.toLocaleDateString(undefined)
+  res.render('user-profile', { title: `${user.firstName}`, user, date, req })
 }))
 
 /* GET users listing. */
