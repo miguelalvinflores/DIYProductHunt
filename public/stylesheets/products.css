@@ -14,7 +14,7 @@
     border-radius: 8px;
 }
 
-.product-listing__image {}
+/* .product-listing__image {} */
 
 .product-listing__info {
     display: flex;
@@ -31,4 +31,4 @@
     font-size: 20px;
 }
 
-.product-info__summary {}
+/* .product-info__summary {} */

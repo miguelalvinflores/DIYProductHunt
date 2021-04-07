@@ -22,7 +22,6 @@ router.get('/new-product', csrfProtection, restoreUser, requireAuth, asyncHandle
     res.render('new-product', {
         title: "Launch New Product",
         product,
-        user,
         csrfToken: req.csrfToken()
     })
 }));
