@@ -1,9 +1,9 @@
 extends layout.pug
 include utils.pug
 block content
-    div.modal#myModal
-        div.modal-content
-            img(scr='./public/images/logo.png' style='width:100px; height:100px;')
+    div.modal
+        div.modal-signUp
+           <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
             div#signup-errors
                 +validationErrorsSummary(errors)
                 form(method="post" action="/users/signup")
