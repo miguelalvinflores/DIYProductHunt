@@ -13,10 +13,10 @@ html
         div.nav-wrapper
           ul.right
             li.search Search
-            li: a(href="/") Home
+            li: a(href="/products") Products
             li: a(href='/categories') Categories
             if locals.authenticated
-              li: a(href=`/users/${user.id}`): span Welcome #{user.firstName}
+              li: a(href=`/users/${user.id}`): span Welcome #{user.firstName}!
               li: form(method="post" action="/users/logout"): button(type="submit") Log Out
             else
               li: a(href="/users/login") Login
