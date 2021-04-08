@@ -58,13 +58,14 @@ router.put('/users/:id(\^\d+$\)', userValidators, restoreUser, requireAuth,
             const id = parseInt(req.params.id, 10);
             const user = await User.findOne({ where: { id } });
             if(user) {
+                const {
+                    firstName,
+                    lastName,
+                    userName,
+                    emailAddress,
+                    profilePicURL
+                } = req.body;
 
-                const firstName = document.querySelector('#firstName');
-                const lastName = document.querySelector('#lastName');
-                const userName = document.querySelector('#userName');
-                const emailAddress = document.querySelector('#emailAddress');
-                const profilePicURL = document.querySelector('#profilePicURL');
-                const password = document.querySelector('#password');
 
                 const passwordMatch = await bcrypt.compare(password, user.hashedPW.toString());
 

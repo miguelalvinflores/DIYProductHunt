@@ -2,13 +2,14 @@ extends layout.pug
 include utils.pug
 block head
     link(rel="stylesheet", href="/stylesheets/user-profile.css")
+    script(src="/javascripts/user-profile.js" type="module")
 block content
     div.modal.hidden
         div.modal-edit-profile
             <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
             div#signup-errors
                 +validationErrorsSummary(errors)
-                form(method="post" action="/users/signup")
+                form
                     input(type="hidden" name="_csrf" value=csrfToken)
                     +field("First Name", "firstName", user.firstName)
                     +field("Last Name", "lastName", user.lastName)
@@ -18,7 +19,7 @@ block content
                     +field("Confirm Password", "password", null, "password")
                     div
                         button.edit-btn Edit Profile
-                        a(href="/") Cancel
+                        button.edit-btn-cancel Cancel
     +validationErrorsSummary(errors)
     div.profile
         div.profile-user
@@ -30,6 +31,10 @@ block content
                 span Contact Creator: #{user.emailAddress}
             div.profile-user__joinday
                 span Joined: 🎂 #{date}
+            if req.session.auth && req.session.auth.userId === user.id
+                div.profile-user__edit
+                    button.edit-profile-btn Edit Profile
+                div.user-id.hidden
         div.profile-products
             if req.session.auth && req.session.auth.userId === user.id
                 div.profile-products__user-labels
