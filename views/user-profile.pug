@@ -23,7 +23,19 @@ block content
                     div
                         button.edit-btn Edit Profile
                         button.edit-btn-cancel Cancel
-    //- +validationErrorsSummary(errors)
+    div(style="display: none").modal#modal-delete-profile
+        div.modal-delete-profile
+            <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+            div#signup-errors
+                div#delete-profile-errors
+                p Are you sure you want to delete your profile? This process is irreversible.
+                form(method="get" action=`/users/${user.id}/delete`)
+                    input(type="hidden" name="userId" id="user-id" value=user.id)
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    +field("Confirm Password", "passwordDelete", null, "password")
+                    div
+                        button(type="submit").delete-btn Delete Profile
+                        button.delete-btn-cancel Cancel
     div.profile
         div.profile-user
             div.profile-user__pic-container
@@ -60,4 +72,5 @@ block content
                                 td.table__date #{product.createdAt.toLocaleDateString(undefined)}
         if req.session.auth && req.session.auth.userId === user.id
             div.profile-delete
-                a(href=`/users/${user.id}/delete`): button Delete Profile
+                +validationErrorsSummary(errors)
+                a(href=`/users/${user.id}/delete`): button.delete-profile-btn Delete Profile

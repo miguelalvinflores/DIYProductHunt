@@ -16,6 +16,35 @@ router.get('/:id(\\d+$\)', csrfProtection, restoreUser, asyncHandler(async (req,
   });
   const date = user.createdAt.toLocaleDateString(undefined)
   res.render('user-profile', { title: `${user.firstName}`, user, date, req, csrfToken: req.csrfToken() })
+}));
+
+router.get('/:id(\\d+$\)/delete', csrfProtection, restoreUser, asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id, 10)
+  const { passwordDelete } = req.body;
+
+  let errors = [];
+  const validatorErrors = validationResult(req);
+
+  if (validatorErrors.isEmpty()) {
+    const user = await User.findOne({
+      where: {id},
+    });
+
+    if(user) {
+      const passwordMatch = await bcrypt.compare(passwordDelete, user.hashedPW.toString())
+      if (passwordMatch) {
+        await user.destroy();
+        res.redirect()
+      } else {
+        errors.push('Profile was not deleted because the password you provided did not match our records')
+        const date = user.createdAt.toLocaleDateString(undefined)
+        res.render('user-profile', { title: `${user.firstName}`, user, date, errors, req, csrfToken: req.csrfToken() })
+
+      }
+    }
+
+    res.redirect('/');
+  }
 }))
 
 /* GET users listing. */

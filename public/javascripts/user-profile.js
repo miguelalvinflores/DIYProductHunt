@@ -2,7 +2,7 @@
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-
+// EDIT PROFILE FUNCITONALITY
     const editProfileBtn = document.querySelector('.edit-profile-btn')
     const editProfileBtnCancel = document.querySelector('.edit-btn-cancel')
 
@@ -55,19 +55,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                 profilePicURL: profilePicURLU
             } = jsonUser.user
             console.log(jsonUser)
-    
+
             const fullname = document.querySelector('#full-name');
             const contact = document.querySelector('#contact');
             const image = document.querySelector('#image');
             const username = document.querySelector('#username');
-    
-    
+
+
             modalEditProfile.style.display = "none";
             fullname.innerHTML = `${firstNameU} ${lastNameU}`
             contact.innerHTML = `Contact Creator: ${emailAddressU}`
             image.src = profilePicURLU
             username.innerHTML = `Username: ${userNameU}`
-            
+
         } else if (jsonUser.userNotFound) {
             alert('This account does not exist. You are now being redirected to the home page');
             console.log('redirected')
@@ -88,5 +88,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             editProfileErrors.appendChild(errorDiv)
         }
+    })
+
+    const deleteProfileBtn = document.querySelector('.delete-profile-btn')
+    const deleteProfileBtnCancel = document.querySelector('.delete-btn-cancel')
+
+    const modalDeleteProfile = document.querySelector('#modal-delete-profile')
+    deleteProfileBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalDeleteProfile.style.display = "block";
+    })
+    deleteProfileBtnCancel.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalDeleteProfile.style.display = "none";
     })
 })
