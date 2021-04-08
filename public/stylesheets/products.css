@@ -132,3 +132,14 @@
 .user-info__stats {
     margin: 5px;
 }
+
+.product-listing__left {
+    width: 75%;
+}
+
+.product-listing__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 25%;
+}

@@ -1,10 +1,16 @@
 var express = require('express');
 var router = express.Router();
 const { asyncHandler, csrfProtection } = require('./utils');
-const { User, Product } = require('../db/models')
+const { User, Product, Comment } = require('../db/models')
 const {check, validationResult } = require('express-validator');
 const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
 const bcrypt = require('bcryptjs')
+
+router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
+  const demoUser = await User.findByPk(1);
+  loginUser(req, res, demoUser);
+  res.redirect('/products');
+}))
 
 router.get('/:id(\\d+$\)', csrfProtection, restoreUser, asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10)
@@ -39,10 +45,12 @@ router.post('/:id(\\d+\)/delete', csrfProtection, restoreUser, asyncHandler(asyn
       console.log(3)
       const passwordMatch = await bcrypt.compare(passwordDelete, user.hashedPW.toString())
       if (passwordMatch) {
+        await Comment.destroy({where: { userId: userIdDelete }});
+        await Product.destroy({where: { userId: userIdDelete }});
+        logoutUser(req, res)
         await user.destroy();
         res.redirect('/')
       } else {
-        console.log(4)
         errors.push('Profile was not deleted because the password you provided did not match our records')
         const date = user.createdAt.toLocaleDateString(undefined)
         res.render('user-profile', { title: `${user.firstName}`, user, date, errors, req, csrfToken: req.csrfToken() })

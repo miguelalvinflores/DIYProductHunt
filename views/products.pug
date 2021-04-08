@@ -24,5 +24,6 @@ block content
                                     span=product.summary
                     div.product-listing__right
                         div.product-listing__buttons
-                            //- div.product-info__details-btn
                             a(href=`/products/${product.id}`): button Details Page
+                        div.product-listing__createdAt
+                            span Launched: #{product.createdAt.toLocaleDateString(undefined)}
