@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+
+
+.modal-create {
+    background-color: #fefefe;
+    position: relative;
+    bottom: 15%;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 425px;
+    height: 550px;/* Could be more or less, depending on screen size */
+      /* justify-content: center;
+      align-items: center; */
+    overflow: auto; /* Enable scroll if needed */
+    box-shadow: 2px 3px 4px #5b2333;
+      /* position: absolute; */
+}

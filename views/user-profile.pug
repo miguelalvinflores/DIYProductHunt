@@ -1,8 +1,10 @@
 extends layout.pug
+
 include utils.pug
 block head
     link(rel="stylesheet", href="/stylesheets/user-profile.css")
     script(src="/javascripts/user-profile.js" type="module")
+
 block content
     div(style="display: none").modal
         div.modal-edit-profile
@@ -28,6 +30,7 @@ block content
                 a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).profile-user__pic
             div.profile-user__name
                 span #{user.firstName} #{user.lastName}
+
             div.profile-user__contact
                 span Contact Creator: #{user.emailAddress}
             div.profile-user__joinday
@@ -57,3 +60,4 @@ block content
         if req.session.auth && req.session.auth.userId === user.id
             div.profile-delete
                 a(href=`/users/${user.id}/delete`): button Delete Profile
+

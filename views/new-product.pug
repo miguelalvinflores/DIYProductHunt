@@ -1,13 +1,21 @@
 extends layout.pug
 include utils.pug
+block head
+    link(rel="stylesheet", href="/stylesheets/index.css")
+    link(rel="stylesheet", href="/stylesheets/new-product.css")
 block content
-    +validationErrorsSummary(errors)
-    form(method="post" action="/products/new-product")
-        input(type="hidden" name="_csrf" value=csrfToken)
-        +field("Product Name", "name", product.name)
-        +field("Photo URL", "photoURL", product.photoURL)
-        +field("Summary", "summary", product.summary)
-        +field("Description", "description", product.description)
-        div
-            button(type="submit") Launch Product
-            a(href="/") Cancel
+    div.modal
+        div.modal-create
+            a(href='/'): img(src="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_150/v1617760512/logo_iyted7.png" alt="logo")
+            div#signup-errors
+                +validationErrorsSummary(errors)
+                form(method="post" action="/products/new-product")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    +field("Product Name", "name", product.name)
+                    +field("Photo URL", "photoURL", product.photoURL)
+                    +field("Summary", "summary", product.summary)
+                    label(class="form-label" for='description') Full Description
+                    textarea(class="form-input" id='description' name='description' value=product.description)
+                    div
+                        button(type="submit") Launch!
+                a(href=`/users/${user.id}`) Cancel
