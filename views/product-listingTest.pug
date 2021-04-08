@@ -1,0 +1,20 @@
+extends layout.pug
+block head
+  link(rel="stylesheet", href="/stylesheets/product-listing.css")
+block content
+    div.product_listing-wrapper
+        div.product_listing-contents-img
+            a(href=`/products/${product.id}`): img(src=`${product.photoURL}`)
+            span.mini-product-name #{product.name}
+        div.product_listing-contents-description
+            h2.product-listing-name #{product.name}
+            span.contributor-name #{product.userId}
+            p.product-summary #{product.summary}
+            p.product-description #{product.description}
+        div.product_listing-contents-upvote
+            button(type="submit" action='/') Upvote
+        div.product-listing__imgDiv-user
+            div
+                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`)
+            div
+                span #{user.firstName} #{user.lastName}
