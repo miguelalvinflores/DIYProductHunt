@@ -1,6 +1,7 @@
 extends layout.pug
 block head
     link(rel="stylesheet", href="/stylesheets/products.css")
+    script(type='text/javascript' src='/javascripts/comments.js')
 block content
     //- Product banner/ Top Half
     div.product-detail
@@ -33,11 +34,19 @@ block content
                     span Products Created: #{userProducts.count}
 
 
-        div.comment-form
-            form(method='post' action=`/products/${product.id}/comments`)
+        div.comments
+            form(class='comment-form' method='post' action=`/products/${product.id}/comments`)
+                input(class='productId' type='hidden' value = productId)
                 label(for='content') #{user.userName}:
                 textarea(name='content' id='content' placeholder='Leave a Comment' required)
                 button(type='submit') Submit
         //- Creator Info
+        div.old-comments
+            ul.old-comments-list
+                each comment in comments
+                    li.old-comments-list
+                        div.commentor= user.userName
+                        div.comment-time= comment.createdAt
+                        div.comment-body= comment.content
 
         div

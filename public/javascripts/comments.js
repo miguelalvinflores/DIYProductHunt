@@ -1,10 +1,18 @@
 ///place script in user-profile.pug
 document.addEventListener("DOMContentLoaded", async () => {
 
+
+
 document.querySelector('.comment-form').addEventListener('submit', async(event) => {
     event.preventDefault();
 
+
+    const uri = event.target.baseURI
+    console.log('uri', uri)
+    debugger
+
     let content = document.querySelector('#content').value;
+    let productId = document.querySelector('.productId').value;
 
     let commentData = await fetch(`http://localhost:8080/products/${productId}/comments`, {
         method: 'POST',
@@ -14,14 +22,8 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
         body: JSON.stringify({ content: content })
     })
 
-    let comment = await commmentData.json()
-    // const commentdata = await fetch('localhost:8080/products/:id/comments')
-    // const comment = await commentdata.json();
-
-
-
-    const userdata = await fetch(`localhost:8080/users/comment.userId`);
-    const user = await userdata.json();
+    let comment = await commentData.json();
+    console.log('comment', comment)
 
     //create comment list item
     const commentLi = document.createElement('li');

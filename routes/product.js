@@ -15,12 +15,16 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10)
     const product = await Product.findByPk(id,
         {include: Comment}
-     )
+    )
+    const comments = await Comment.findAll({
+        where: id
+    })
+
     const user = await User.findOne({where: { id: product.userId }});
 
     const userProducts = await Product.findAndCountAll({where: { userId: product.userId }})
     console.log(userProducts)
-    res.render('product-listing', { title: `${product.name}`, product, user, userProducts })
+    res.render('product-listing', { title: `${product.name}`, product, comments, user, userProducts })
 
 }))
 
@@ -113,12 +117,12 @@ router.post('/:id(\\d+$\)/comments', restoreUser, asyncHandler(async(req, res) =
 
     const content = req.body.content
 
-    await Comment.create({
+    const newComment = await Comment.create({
         content,
         userId: product.userId,
         productId,
     });
-
+    res.json({newComment, user:product.User.userName })
 
 }))
 
