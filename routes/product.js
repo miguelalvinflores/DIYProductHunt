@@ -19,7 +19,6 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
     const user = await User.findOne({where: { id: product.userId }});
 
     const userProducts = await Product.findAndCountAll({where: { userId: product.userId }})
-    console.log(userProducts)
     res.render('product-listing', { title: `${product.name}`, product, user, userProducts })
 
 }))
@@ -73,10 +72,8 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
     if(validatorErrors.isEmpty()) {
         if (res.locals.authenticated) {
             const { userId } = req.session.auth
-            console.log('userId:', userId)
             product.userId = userId
             const newProduct = await product.save();
-            console.log(newProduct)
             res.redirect(`/products/${newProduct.id}`)
         } else {
             let errors = ["Cannot create Product launch without associated account, please sign in, or create an account <a href='/users/login'> Click Here to Login.</a>"]

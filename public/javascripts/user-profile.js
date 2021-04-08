@@ -8,12 +8,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const modal = document.querySelector('.modal')
     editProfileBtn.addEventListener('click', (e) => {
-        console.log('this better work')
         e.preventDefault();
         modal.style.display = "block";
     })
     editProfileBtnCancel.addEventListener('click', (e) => {
-        console.log('this better work')
         e.preventDefault();
         modal.style.display = "none";
     })
@@ -40,13 +38,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             password
         };
 
-        const result = await fetch(`http://localhost:8080/api/users/${userId}`, {
-            method: 'PUT',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-        })
+        try {
+            const updatedUser = await fetch(`http://localhost:8080/api/users/${userId}`, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            })
+            console.log(updatedUser)
+            const jsonUser = await updatedUser.json()
+            console.log(jsonUser)
+            
+        } catch (error) {
+            console.log(error)
+        }
 
     })
 })
