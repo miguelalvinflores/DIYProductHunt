@@ -9,7 +9,7 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
 
     const uri = event.target.baseURI
     console.log('uri', uri)
-    debugger
+
 
     let content = document.querySelector('#content').value;
     let productId = document.querySelector('.productId').value;
