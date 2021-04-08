@@ -4,8 +4,8 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
 
       return queryInterface.bulkInsert('Comments', [
-        {content: "Your product rocks!", userId:1, productId:2, createdAt: new Date(), updatedAt: new Date()},
-        {content: "Love this!", userId:1, productId:2, createdAt: new Date(), updatedAt: new Date()},
+        {content: "Your product rocks!", userId:1, productId:3, createdAt: new Date(), updatedAt: new Date()},
+        {content: "Love this!", userId:1, productId:3, createdAt: new Date(), updatedAt: new Date()},
       ], {});
 
   },
