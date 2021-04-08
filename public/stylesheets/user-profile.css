@@ -28,16 +28,9 @@
     object-fit: cover;
 }
 
-.profile-user__name,
-.profile-user__username,
-.profile-user__contact,
-.profile-user__joinday {
+.profile-user__name, .profile-user__username, .profile-user__contact, .profile-user__joinday {
     margin: 5px;
 }
-
-
-
-
 
 .modal-edit-profile {
     background-color: #fefefe;
@@ -57,6 +50,7 @@
     box-shadow: 2px 3px 4px #5b2333;
     /* position: absolute; */
 }
+
 .modal-delete-profile {
     background-color: #fefefe;
     position: relative;
@@ -74,6 +68,19 @@
     /* Enable scroll if needed */
     box-shadow: 2px 3px 4px #5b2333;
     /* position: absolute; */
+}
+
+#delete-profile-errors {
+    position: relative;
+    left: 10%;
+    top: 100px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 80%;
+    background-color: white;
+    color: red;
+    font-size: 15px
 }
 
 /* PRODUCTS */
