@@ -1,14 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+.product-list {
+    position: relative;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-detail {
+    position: relative;
+    top: 100px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+
+.product-list__label {
+    position: relative;
+    right: 30%;
+}
 
 .product-listing {
     display: flex;
-    justify-content: flex-start;
-    border: 2px solid #d31e0d;
+    justify-content: space-between;
+    border: 2px solid #564d4a;
     border-radius: 15px;
     padding: 5px;
     margin: 5px;
-    max-width: 60%;
+    width: 60%;
+}
+
+.product-listing__detail {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #564d4a;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 5px;
+    width: 60%;
+    min-height: 200px;
+}
+
+.product-listing__left {
+    display: flex;
+    flex-direction: row;
+}
+
+.product-listing__buttons {
+    /* align-items: flex-end; */
+    /* display: flex; */
+    /* flex-direction: row; */
+    align-self: flex-end;
 }
 
 .product-image {
@@ -22,16 +67,68 @@
 .product-listing__info {
     display: flex;
     flex-direction: column;
+    position: inherit;
+    right: 40%;
+    padding: 10px;
 }
 
 .product-info {
-    padding: 10px;
+    display: flex;
+    flex-direction: row;
 }
 
 .product-info__name {
     font-weight: bold;
     color: #564d4a;
     font-size: 20px;
+    margin-right: 25px;
 }
 
-/* .product-info__summary {} */
+.product-info__summary {
+    margin: 5px;
+}
+
+.product-info__description {
+    margin: 5px;
+}
+
+.user {
+    box-sizing: border-box;
+    display: flex;
+    border: 2px solid #564d4a;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 5px;
+    min-height: 200px;
+}
+
+.user__pic {
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: auto;
+    margin: 15px;
+    width: 100px;
+    /* width of container */
+    height: 100px;
+    /* height of container */
+    object-fit: cover;
+}
+
+.user__pic-container {
+    height: 100px;
+    width: auto;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.user-info__name {
+    margin: 5px;
+}
+
+.user-info__stats {
+    margin: 5px;
+}

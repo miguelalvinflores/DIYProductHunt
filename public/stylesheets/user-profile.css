@@ -1,0 +1,112 @@
+.profile {
+    position: relative;
+    left: 10%;
+    top: 100px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 80%;
+    background-color: white;
+}
+
+.profile-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.profile-user__pic {
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: auto;
+    margin: 15px;
+    width: 200px;
+    /* width of container */
+    height: 200px;
+    /* height of container */
+    object-fit: cover;
+}
+
+.profile-user__name {
+    margin: 5px;
+}
+
+.profile-user__contact {
+    margin: 5px;
+}
+
+.profile-user__joinday {
+    margin: 5px;
+}
+
+.modal-edit-profile {
+    background-color: #fefefe;
+    position: relative;
+    bottom: 15%;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 425px;
+    height: 550px;
+    /* Could be more or less, depending on screen size */
+    /* justify-content: center;
+    align-items: center; */
+    overflow: auto;
+    /* Enable scroll if needed */
+    box-shadow: 2px 3px 4px #5b2333;
+    /* position: absolute; */
+}
+
+/* PRODUCTS */
+
+.profile-products {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 35%;
+}
+
+.profile-products__user-labels {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-products__table-container {
+    border: 3px solid;
+    margin: 15px;
+    margin-bottom: 50px;
+}
+
+.profile-products__table {
+    width: 100%;
+}
+
+.profile-products__table-row {
+    text-align: center;
+}
+
+.profile-products__user-labels>span {
+    align-self: flex-end;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table__date {
+    text-align: center;
+}
+
+button {
+    width: 150px;
+}
+
+/* DELETE  */
+
+.profile-delete {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

@@ -15,7 +15,7 @@ nav {
     border-bottom:3px solid white;
     background-color: #f7f7f7;
     width: 100%;
-    position: absolute;
+    position: relative;
     top: 65px;
 }
 

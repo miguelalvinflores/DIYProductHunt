@@ -1,37 +1,63 @@
 extends layout.pug
+
+include utils.pug
 block head
-    link(rel="stylesheet", href="/stylesheets/index.css")
+    link(rel="stylesheet", href="/stylesheets/user-profile.css")
+    script(src="/javascripts/user-profile.js" type="module")
+
 block content
-    //- Product banner/ Top Half
-    div
-
-        div
-            div
-                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`)
-        div
-            div
+    div(style="display: none").modal
+        div.modal-edit-profile
+            <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+            div#signup-errors
+                +validationErrorsSummary(errors)
+                form
+                    input(type="hidden" name="userId" id="user-id" value=user.id)
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    +field("First Name", "firstName", user.firstName)
+                    +field("Last Name", "lastName", user.lastName)
+                    +field("Username", "userName", user.userName)
+                    +field("Email Address", "emailAddress", user.emailAddress, "email")
+                    +field("Profile Pic URL", "profilePicURL", user.profilePicURL)
+                    +field("Confirm Password", "password", null, "password")
+                    div
+                        button.edit-btn Edit Profile
+                        button.edit-btn-cancel Cancel
+    +validationErrorsSummary(errors)
+    div.profile
+        div.profile-user
+            div.profile-user__pic-container
+                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).profile-user__pic
+            div.profile-user__name
                 span #{user.firstName} #{user.lastName}
-            div
-                p Contact Creator:
-                span #{user.emailAddress}
-            div
-                but
-    //- Bottom Half
-    div
-        //- Created products
-        div
 
-        //- Upvotes on any Product
-        div
-            div
+            div.profile-user__contact
+                span Contact Creator: #{user.emailAddress}
+            div.profile-user__joinday
+                span Joined: 🎂 #{date}
+            if req.session.auth && req.session.auth.userId === user.id
+                div.profile-user__edit
+                    button.edit-profile-btn Edit Profile
+        div.profile-products
+            if req.session.auth && req.session.auth.userId === user.id
+                div.profile-products__user-labels
+                    span Your Products
+                    a(href=`/products/new`): button Create Product
+            else
+                div.profile-products__guest-labels
+                    span #{user.firstName}'s Products
+            div.profile-products__table-container
+                table.profile-products__table
+                    thead
+                        tr.profile-products__table__row-head
+                            th Product Name
+                            th Created On
+                    tbody
+                        each product in user.Products
+                            tr.profile-products__table__row-data
+                                td: a(href=`/products/${product.id}`) #{product.name}
+                                td.table__date #{product.createdAt.toLocaleDateString(undefined)}
+        if req.session.auth && req.session.auth.userId === user.id
+            div.profile-delete
+                a(href=`/users/${user.id}/delete`): button Delete Profile
 
-            div
-                //- comments
-        //- Creator Info
-        div
-            div
-                span Joined: #{user.createdAt}
-
-                div
-                    span #{user.firstName} #{user.lastName}
-                    form(method="get" action="/products/new-product"): button(type="submit") Create Product
