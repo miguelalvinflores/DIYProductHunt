@@ -29,11 +29,15 @@ block content
             div.user-info
                 div.user-info__name
                     span #{user.firstName} #{user.lastName}
-                div.user-info__stats 
+                div.user-info__stats
                     span Products Created: #{userProducts.count}
 
-    //- Bottom Half
-    div
-        //- Product Info/ Discussion
+
+        div.comment-form
+            form(method='post' action=`/products/${product.id}/comments`)
+                label(for='content') #{user.userName}:
+                textarea(name='content' id='content' placeholder='Leave a Comment' required)
+                button(type='submit') Submit
         //- Creator Info
+
         div
