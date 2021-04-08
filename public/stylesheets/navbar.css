@@ -53,9 +53,3 @@ ul.right {
     color: #5b2333;
     text-decoration: none;
 }
-
-.nav-wrapper li a::after {
-    color: #d31e0d;
-    text-decoration: underline;
-
-}
