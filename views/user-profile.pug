@@ -1,4 +1,6 @@
 extends layout.pug
+block head
+    link(rel="stylesheet", href="/stylesheets/index.css")
 block content
     //- Product banner/ Top Half
     div
@@ -32,3 +34,4 @@ block content
 
                 div
                     span #{user.firstName} #{user.lastName}
+                    form(method="get" action="/products/new-product"): button(type="submit") Create Product

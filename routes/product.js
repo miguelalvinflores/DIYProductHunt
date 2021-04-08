@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { asyncHandler, csrfProtection } = require('./utils');
-const { User, Product } = require('../db/models')
+const { User, Product, Comment } = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
 
@@ -12,9 +12,11 @@ router.get('/', restoreUser, asyncHandler( async(req, res) => {
 
 router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10)
-    const product = await Product.findOne({ where: { id } })
+    const product = await Product.findByPk(id,
+        {include: Comment}
+     )
     const user = await User.findOne({where: { id: product.userId }});
-    res.render('product-listing', { title: `${product.name}`, product, user })
+    res.render('product-listingTest', { title: `${product.name}`, product, user })
 }))
 
 router.get('/new-product', csrfProtection, restoreUser, requireAuth, asyncHandler( async(req, res) => {

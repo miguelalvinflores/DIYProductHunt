@@ -1,0 +1,30 @@
+.about-wrapper {
+    display: flex;
+    position: relative;
+    top: 275px;
+    padding-top: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.person {
+    padding: 20px;
+}
+
+.bio-name {
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-weight: 200;
+    font-size: 22px;
+    color: #5b2333;
+}
+
+.social-media a {
+
+    padding: 10px;
+
+
+}
+
+img.expand {
+    width: 40px
+}

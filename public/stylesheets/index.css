@@ -12,6 +12,7 @@ body {
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
+    text-align:left;
     left: 50%;
     top: 50%;
     width: 100%;
@@ -77,8 +78,9 @@ body {
     font-weight: 200;
     font-size: 16px;
     color: #564d4a;
-    padding-right: 5%;
-    padding-top: 5%;
+    display: inline-block;
+    width: 125px;
+    text-align: left;
     line-height: 2em;
 
 }
@@ -103,8 +105,10 @@ body {
     font-size: size 14px;
     color: #564d4a;
     border: solid 1px #564d4a;
+    border-radius: 5px;
     min-width: 50%;
     margin-bottom: 1em;
+    /* margin: 0 auto; */
 }
 
 .user-name {
@@ -120,7 +124,7 @@ button {
     font-size: 18px;
     color: #5B2333;
     background-color: #F7F4F3;
-    border-radius: 3px;
+    border-radius: 5px;
     margin: 10px 10px;
     padding: 3%;
     max-width: 150px;
