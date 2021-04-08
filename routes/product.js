@@ -108,7 +108,7 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
 
 }))
 
-router.post('/:id(\\d+$\)/comments', restoreUser, asyncHandler(async(req, res) => {
+router.post('/:id(\\d+$\)', restoreUser, asyncHandler(async(req, res) => {
     const productId = parseInt(req.params.id, 10);
 
     const product = await Product.findByPk(productId, {
@@ -117,12 +117,15 @@ router.post('/:id(\\d+$\)/comments', restoreUser, asyncHandler(async(req, res) =
 
     const content = req.body.content
 
+
     const newComment = await Comment.create({
         content,
         userId: product.userId,
         productId,
     });
     res.json({newComment, user:product.User.userName })
+    console.log('NEW COMMENT', newComment)
+
 
 }))
 

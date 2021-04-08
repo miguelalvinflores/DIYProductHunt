@@ -26,7 +26,7 @@ block content
 
         div.user
             div.user__pic-container
-                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).user__pic
+                //- a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).user__pic
             div.user-info
                 div.user-info__name
                     span #{user.firstName} #{user.lastName}
@@ -49,4 +49,4 @@ block content
                         div.comment-time= comment.createdAt
                         div.comment-body= comment.content
 
-        div
+        div.new-comments
