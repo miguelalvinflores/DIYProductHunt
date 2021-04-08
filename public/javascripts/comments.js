@@ -7,7 +7,8 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
     event.preventDefault();
 
 
-    const uri = event.target.baseURI
+    const uri = event.target.baseURI;
+    const splitUri
     console.log('uri', uri)
 
 
