@@ -50,14 +50,17 @@ const userValidators = [
         .withMessage("Must be a link to a valid file format (.jpg, .png, .svg)."),
 ];
 
-router.put('/users/:id(\^\d+$\)', userValidators, restoreUser, requireAuth,
+router.put('/users/:id(\\d+$\)', userValidators,
     asyncHandler( async( req, res) => {
+        console.log('1')
         const validatorErrors = validationResult(req);
         const errors = [];
         if (validatorErrors.isEmpty()) {
+            console.log('2')
             const id = parseInt(req.params.id, 10);
             const user = await User.findOne({ where: { id } });
             if(user) {
+                console.log('3')
                 const {
                     firstName,
                     lastName,
@@ -70,6 +73,7 @@ router.put('/users/:id(\^\d+$\)', userValidators, restoreUser, requireAuth,
                 const passwordMatch = await bcrypt.compare(password, user.hashedPW.toString());
 
                 if (passwordMatch) {
+                    console.log('4')
                     user.firstName = firstName;
                     user.lastName = lastName;
                     user.userName = userName;

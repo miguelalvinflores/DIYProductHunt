@@ -3,7 +3,7 @@ var router = express.Router();
 const { asyncHandler, csrfProtection } = require('./utils');
 const { User, Product } = require('../db/models')
 const { check, validationResult } = require('express-validator');
-const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
+const { requireAuth, restoreUser } = require('../auth');
 const {Sequelize} = require('sequelize')
 
 router.get('/', restoreUser, asyncHandler( async(req, res) => {
