@@ -51,18 +51,12 @@ router.put('/users/:id(\\d+$\)', userValidators,
                     profilePicURL,
                     password
                 } = req.body;
-                
-                
+
+
                 const passwordMatch = await bcrypt.compare(password, user.hashedPW.toString());
                 console.log(passwordMatch)
 
                 if (passwordMatch) {
-                    console.log('4')
-                    // user.firstName = firstName;
-                    // user.lastName = lastName;
-                    // user.userName = userName;
-                    // user.emailAddress = emailAddress;
-                    // user.profilePicURL = profilePicURL;
                     const updatedUser = await user.update({
                         firstName,
                         lastName,

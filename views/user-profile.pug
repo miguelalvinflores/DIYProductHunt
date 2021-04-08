@@ -27,12 +27,13 @@ block content
     div.profile
         div.profile-user
             div.profile-user__pic-container
-                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).profile-user__pic
+                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).profile-user__pic#image
             div.profile-user__name
-                span #{user.firstName} #{user.lastName}
-
+                span#full-name #{user.firstName} #{user.lastName}
+            div.profile-user__username
+                span#username Username: #{user.userName}
             div.profile-user__contact
-                span Contact Creator: #{user.emailAddress}
+                span#contact Contact Creator: #{user.emailAddress}
             div.profile-user__joinday
                 span Joined: 🎂 #{date}
             if req.session.auth && req.session.auth.userId === user.id
@@ -60,4 +61,3 @@ block content
         if req.session.auth && req.session.auth.userId === user.id
             div.profile-delete
                 a(href=`/users/${user.id}/delete`): button Delete Profile
-
