@@ -132,3 +132,12 @@
 .user-info__stats {
     margin: 5px;
 }
+
+.comment-form {
+    position: relative;
+}
+
+.comment-form form {
+    position: absolute;
+    top: 250px
+}
