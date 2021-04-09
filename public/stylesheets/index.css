@@ -127,7 +127,8 @@ button {
     border-radius: 5px;
     margin: 10px 10px;
     padding: 3%;
-    max-width: 150px;
+    width: auto;
+    max-width: 300px;
     min-width: 100px;
     text-transform: capitalize;
     transition: background-color color 0.3s;
