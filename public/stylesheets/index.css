@@ -131,6 +131,7 @@ body {
 
 button {
   font-family: Oswald, 'Times New Roman', Times, serif;
+  height: auto;
   font-weight: 400;
   font-size: 18px;
   color: #5B2333;
@@ -167,6 +168,32 @@ button:hover {
 #signup-errors {
   color: red;
   font-size: 10px
+}
+
+#user-login-demo {
+  position: absolute;
+  align-self: flex-end;
+  right: 22px;
+  bottom: 58px;
+}
+
+#user-login-demo-btn {
+  /* width: 300px;
+  height: 30px; */
+  height: 56.73px;
+}
+
+#user-signup-demo {
+  position: absolute;
+  align-self: flex-end;
+  right: 22px;
+  bottom: 98px;
+}
+
+#user-signup-demo-btn {
+  /* width: 300px;
+  height: 30px; */
+  height: 56.73px;
 }
 
 /* HOME  */

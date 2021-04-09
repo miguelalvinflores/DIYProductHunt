@@ -37,7 +37,7 @@ block content
         div.comments
             form(class='comment-form' method='post' action=`/products/${product.id}/comments`)
                 input(class='productId' type='hidden' value = productId)
-                label(for='content') #{user.userName}:
+                label(for='content') #{req.session.auth.userName}:
                 textarea(name='content' id='content' placeholder='Leave a Comment' required)
                 button(type='submit') Submit
         //- Creator Info
@@ -45,7 +45,7 @@ block content
             ul.old-comments-list
                 each comment in comments
                     li.old-comments-list
-                        div.commentor= user.userName
+                        div.commentor= comment.User.userName
                         div.comment-time= comment.createdAt
                         div.comment-body= comment.content
 

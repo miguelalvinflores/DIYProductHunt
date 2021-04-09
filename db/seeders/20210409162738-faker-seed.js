@@ -313,7 +313,7 @@ module.exports = {
     const commentMaker = () => {
       const randNum = Math.floor(Math.random() * 3.5);
       const comments = [
-        `This product is so ${faker.commerce.productAdjective}!!!`,
+        `This product is so ${faker.commerce.productAdjective()}!!!`,
         `${faker.company.catchPhrase()}`,
         `So cool! I want one in ${faker.commerce.color()}`,
         `I am willing to pay you ${faker.finance.currencySymbol()} ${(Math.floor(Math.random() * 100))} and a ${faker.animal.crocodilia()} skin ${faker.commerce.product().toLowerCase()} for this!!!`
@@ -325,10 +325,9 @@ module.exports = {
       for (let j = 0; j < 3; j++) {
         const product = products[(i * 3) + j];
         for (let a = 0; a < 3; a++) {
-          const user = users[Math.floor(Math.random() * 10)];
           const comment = {
             content: commentMaker(),
-            userId: user.id,
+            userId: users[(a + j + i) % 9].id,
             productId: product.id,
             createdAt: faker.date.past(),
             updatedAt: new Date(),

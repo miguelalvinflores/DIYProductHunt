@@ -17,12 +17,13 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
         {include: Comment}
     )
     const comments = await Comment.findAll({
-        where: {productId : id}
+        where: {productId : id},
+        include: User
     })
     const creator = await User.findOne({where: { id: product.userId }});
     const creatorProducts = await Product.findAndCountAll({where: { userId: product.userId }})
 
-    res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts })
+    res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, req })
 
 
 
