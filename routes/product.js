@@ -24,6 +24,7 @@ router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
     const creator = await User.findOne({where: { id: product.userId }});
     const creatorProducts = await Product.findAndCountAll({where: { userId: product.userId }})
 
+
     if (res.locals.authenticated) {
         const userId  = req.session.auth.userId
         const user = await User.findByPk(userId)
@@ -32,6 +33,7 @@ router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
         const user = "Please sign in to comment"
         res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user})
     }
+
 
 }))
 
