@@ -34,7 +34,7 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
     //create commentor from user
     const commentor = document.createElement('div');
     commentor.classList.add('commentor');
-    commentor.innerHTML = comment.user;
+    commentor.innerHTML = comment.user.userName;
     //create timestamp
     const commentTime = document.createElement('div');
     commentTime.classList.add('comment-time');

@@ -11,20 +11,28 @@ router.get('/', restoreUser, asyncHandler( async(req, res) => {
     res.render('products', { title: 'Products', products})
 }))
 
-router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
+router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10)
     const product = await Product.findByPk(id,
         {include: Comment}
     )
     const comments = await Comment.findAll({
+
         where: {productId : id},
         include: User
     })
     const creator = await User.findOne({where: { id: product.userId }});
     const creatorProducts = await Product.findAndCountAll({where: { userId: product.userId }})
 
-    res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, req })
 
+    if (res.locals.authenticated) {
+        const userId  = req.session.auth.userId
+        const user = await User.findByPk(userId)
+        res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user})
+    } else {
+        const user = "Please sign in to comment"
+        res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user})
+    }
 
 
 }))
@@ -115,14 +123,14 @@ router.post('/:id(\\d+$\)', restoreUser, requireAuth, asyncHandler(async(req, re
     });
 
     const content = req.body.content
-
-
+    const userId = req.session.auth.userId
+    const user = await User.findByPk(userId)
     const newComment = await Comment.create({
         content,
-        userId: product.userId,
+        userId,
         productId,
     });
-    res.json({newComment, user:product.User.userName })
+    res.json({newComment, user })
     console.log('NEW COMMENT', newComment)
 
 
