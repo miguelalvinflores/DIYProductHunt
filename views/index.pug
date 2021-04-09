@@ -7,5 +7,10 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  //- h1= title
-  //- p Welcome to your Project Skeleton
+  div.home
+    div.home-container
+      div.home-container__content
+        h1= title
+        p Welcome to your DIY Product Hunt
+      div.home-container__buttons
+        a(href='/demo-login'): button Demo Login

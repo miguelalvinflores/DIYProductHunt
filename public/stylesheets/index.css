@@ -144,17 +144,44 @@ button:hover {
     margin-left: 10px;
   }
 
-  .search-modal--hidden {
-    display: none;
-  }
+.search-modal--hidden {
+  display: none;
+}
 
-  .search-modal__input {
-    border: 1px solid #5b2333;
-    border-radius: 2px;
-    padding: .4em;
-  }
+.search-modal__input {
+  border: 1px solid #5b2333;
+  border-radius: 2px;
+  padding: .4em;
+}
 
-  #signup-errors {
-    color: red;
-    font-size: 10px
-  }
+#signup-errors {
+  color: red;
+  font-size: 10px
+}
+
+/* HOME  */
+.home {
+  display: flex;
+
+}
+.home-container {
+  position: relative;
+  top: 100px;
+  left: 10%;
+  border: 3px solid #999999;
+  border-radius: 15px;
+  width: 80%;
+  background-color: whitesmoke;
+  align-items: center;
+}
+
+.home-container__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.home-container__buttons {
+  display: flex;
+  justify-content: center;
+}
