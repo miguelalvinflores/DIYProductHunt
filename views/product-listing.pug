@@ -15,8 +15,9 @@ block content
                         div.product-info__creator
                             span Created By:
                             a(href=`/users/${product.userId}`)   #{creator.firstName} #{creator.lastName}
-                        div.product-info__description
-                            p=product.description
+
+                            div.product-info__description
+                                p=product.description
             //- div.product-listing__right
             //-     div.product-listing__buttons
                     //- CREATE UPVOTE BUTTON HERE
@@ -29,9 +30,8 @@ block content
                     textarea(name='content' id='content' placeholder='Leave a Comment' required)
                     button(type='submit') Submit
             div.old-comments
-                ul.old-comments-list
-                    each comment in comments
-                        li.old-comments-list
-                            div.commentor= comment.User.userName
-                            div.comment-time= comment.createdAt
-                            div.comment-body= comment.content
+                each comment in comments
+                    div.full-comment
+                        div.commentor= comment.User.userName
+                        div.comment-time= comment.createdAt
+                        div.comment-body= comment.content
