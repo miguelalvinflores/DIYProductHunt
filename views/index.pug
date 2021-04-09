@@ -7,5 +7,16 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  //- h1= title
-  //- p Welcome to your Project Skeleton
+  div.home
+    div.home-container
+      div.home-container__content
+        h1= title
+        p Welcome to your DIY Product Hunt
+        p DIY Product Hunt is a website for creators to share their DIY creations. 
+        p DIY Product Hunt surfaces the best new products, every day. 
+        p It's a place for DIY enthusiasts to share and geek out about their latest creations and foster a client base
+        p Its a place for collectors to find cool products that may not be avalable on the traditional marketplace.
+      div.home-container__buttons
+        a(href='/users/demo-login'): button Demo Login
+        a(href='/users/login'): button User Login
+        a(href='/users/signup'): button Sign Up

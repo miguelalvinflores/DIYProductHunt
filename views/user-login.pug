@@ -10,8 +10,11 @@ block content
                     input(type="hidden" value=csrfToken name="_csrf")
                     +field("User Name", "userName", userName)
                     +field("Password", "password", null, "password")
-                    div
+                    div#log-in-btn
                         button(type="submit") Log In
-                        a(href="/") Cancel
+                div#user-login-demo
+                    a(href='/users/demo-login'): button#user-login-demo-btn Demo Login
                 div
                     a(href="/users/signup") Don't Have An Account?
+                    p
+                    a(href="/") Cancel
