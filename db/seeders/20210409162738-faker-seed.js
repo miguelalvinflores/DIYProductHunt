@@ -10,11 +10,13 @@ module.exports = {
     const usersArray = [{ userName: "DemoUser", emailAddress: "demo@gmail.com", firstName: "Demo", lastName: "User", profilePicURL: 'http://atlas-content-cdn.pixelsquid.com/stock-images/crash-test-dummy-head-XordO9A-600.jpg', hashedPW: "D756IK", createdAt: new Date(), updatedAt: new Date() }]
     
     for (let i = 0; i < 9; i++) {
+      const firstName = faker.name.firstName()
+      const lastName = faker.name.lastName()
       const user = {
-        userName: faker.internet.userName(),
-        emailAddress: faker.internet.email(),
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
+        userName: `${firstName}.${lastName}`,
+        emailAddress: `${firstName}.${lastName}@fake-email.com`,
+        firstName,
+        lastName,
         profilePicURL: faker.image.avatar(),
         hashedPW: bcrypt.hashSync(`password${i}`, 10),
         createdAt: new Date(),
@@ -307,14 +309,25 @@ module.exports = {
       { returning: true }
     );
     const comments = [];
+    
+    const commentMaker = () => {
+      const randNum = Math.floor(Math.random() * 3.5);
+      const comments = [
+        `This product is so ${faker.commerce.productAdjective}!!!`,
+        `${faker.company.catchPhrase()}`,
+        `So cool! I want one in ${faker.commerce.color()}`,
+        `I am willing to pay you ${faker.finance.currencySymbol()} ${(Math.floor(Math.random() * 100))} and a ${faker.animal.crocodilia()} skin ${faker.commerce.product().toLowerCase()} for this!!!`
+      ]
+      return comments[randNum];
+    }
 
     for (let i = 0; i < 10; i++) {
-      const user = users[i];
       for (let j = 0; j < 3; j++) {
-        const product = products[j];
+        const product = products[(i * 3) + j];
         for (let a = 0; a < 3; a++) {
+          const user = users[Math.floor(Math.random() * 10)];
           const comment = {
-            content: faker.lorem.sentence(),
+            content: commentMaker(),
             userId: user.id,
             productId: product.id,
             createdAt: new Date(),

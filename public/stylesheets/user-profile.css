@@ -6,7 +6,9 @@
     justify-content: space-around;
     flex-direction: row;
     width: 80%;
-    background-color: white;
+    background-color: whitesmoke;
+    border: 3px solid #999999;
+    border-radius: 15px;
 }
 
 .profile-user {
@@ -102,7 +104,10 @@
     margin: 15px;
     margin-bottom: 50px;
     overflow: auto;
-    max-height: 300px
+    max-height: 300px;
+    border: 3px solid #999999;
+    border-radius: 15px;
+    background-color: white;
 }
 
 .profile-products__table {
