@@ -8,7 +8,7 @@
 }
 
 .person {
-    padding: 20px;
+    padding: 40px;
     background-color: white;
 
     /* flex-grow: 0; */
@@ -16,7 +16,7 @@
     position: relative;
     margin: 15% 2% 0 2%;
     border: 2px solid #D31E0D;
-    border-radius: 1em;
+    border-radius: .5em;
     box-shadow: 2px 3px 4px #5b2333;
     transition: all 1s ease-out;
 }
