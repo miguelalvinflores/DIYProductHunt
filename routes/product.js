@@ -15,11 +15,16 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10)
     const product = await Product.findByPk(id,
         {include: Comment}
-     )
-    const user = await User.findOne({where: { id: product.userId }});
+    )
+    const comments = await Comment.findAll({
+        where: {productId : id}
+    })
+    const creator = await User.findOne({where: { id: product.userId }});
+    const creatorProducts = await Product.findAndCountAll({where: { userId: product.userId }})
 
-    const userProducts = await Product.findAndCountAll({where: { userId: product.userId }})
-    res.render('product-listing', { title: `${product.name}`, product, user, userProducts })
+    res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts })
+
+
 
 }))
 
@@ -97,6 +102,27 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
             csrfToken: req.csrfToken()
         })
     }
+
+
+}))
+
+router.post('/:id(\\d+$\)', restoreUser, requireAuth, asyncHandler(async(req, res) => {
+    const productId = parseInt(req.params.id, 10);
+
+    const product = await Product.findByPk(productId, {
+         include: User
+    });
+
+    const content = req.body.content
+
+
+    const newComment = await Comment.create({
+        content,
+        userId: product.userId,
+        productId,
+    });
+    res.json({newComment, user:product.User.userName })
+    console.log('NEW COMMENT', newComment)
 
 
 }))

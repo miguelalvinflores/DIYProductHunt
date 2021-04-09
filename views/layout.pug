@@ -5,18 +5,22 @@ html
       link(rel='icon' type='favicon' href='https://res.cloudinary.com/dbu0tmeuc/image/upload/v1617802070/favicon_ww2gmr.ico')
       link(rel='stylesheet' href='/stylesheets/index.css')
       link(rel='stylesheet' href= '/stylesheets/navbar.css')
-      link(rel='stylesheet' href= '/stylesheets/user-login.css')
+
       block head
 
-      
+
 
   body
     header
-      img(class="nav-logo" src="https://res.cloudinary.com/dbu0tmeuc/image/upload/v1617804832/diy-logo_zpclwx.png" alt="logo")
+      a(href='/'): img(class="nav-logo" src="https://res.cloudinary.com/dbu0tmeuc/image/upload/v1617804832/diy-logo_zpclwx.png" alt="logo")
       nav
         div.nav-wrapper
+
           ul.right
-            li(class='nav-link search') Search
+            li(class='nav-link')
+              form.search(action="" method='GET')
+                input(class='search-input' id='search' type='text' name='search' placeholder='Search Products...')
+                label(for='search' class='search-label nav-link'): a(onclick='searchProducts()' href='/search') Search
             li(class='nav-link'): a(href="/products") Products
             //- li: a(href='/categories') Categories
             if locals.authenticated

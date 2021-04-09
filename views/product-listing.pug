@@ -1,8 +1,9 @@
 extends layout.pug
 block head
     link(rel="stylesheet", href="/stylesheets/products.css")
+    script(type='text/javascript' src='/javascripts/comments.js')
 block content
-    //- Product banner/ Top Half
+
     div.product-detail
         div.product-listing__detail
             div.product-listing__left
@@ -15,7 +16,7 @@ block content
                             span=product.name
                         div.product-info__creator
                             span Created By:
-                                a(href=`/users/${product.userId}`)   #{user.firstName} #{user.lastName}
+                                a(href=`/users/${product.userId}`)   #{creator.firstName} #{creator.lastName}
                     div
                         div.product-info__description
                             p=product.description
@@ -25,15 +26,27 @@ block content
 
         div.user
             div.user__pic-container
-                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).user__pic
+                //- a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).user__pic
             div.user-info
                 div.user-info__name
-                    span #{user.firstName} #{user.lastName}
-                div.user-info__stats 
-                    span Products Created: #{userProducts.count}
+                    span #{creator.firstName} #{creator.lastName}
+                div.user-info__stats
+                    span Products Created: #{creatorProducts.count}
 
-    //- Bottom Half
-    div
-        //- Product Info/ Discussion
+
+        div.comments
+            form(class='comment-form' method='post' action=`/products/${product.id}/comments`)
+                input(class='productId' type='hidden' value = productId)
+                label(for='content') #{user.userName}:
+                textarea(name='content' id='content' placeholder='Leave a Comment' required)
+                button(type='submit') Submit
         //- Creator Info
-        div
+        div.old-comments
+            ul.old-comments-list
+                each comment in comments
+                    li.old-comments-list
+                        div.commentor= user.userName
+                        div.comment-time= comment.createdAt
+                        div.comment-body= comment.content
+
+        div.new-comments

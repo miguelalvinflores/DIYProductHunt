@@ -1,31 +1,60 @@
 ///place script in user-profile.pug
+document.addEventListener("DOMContentLoaded", async () => {
 
-document.querySelector('.comment-form').addEventListener('submit', async (event) => {
+
+
+document.querySelector('.comment-form').addEventListener('submit', async(event) => {
     event.preventDefault();
 
-    const commentdata = await fetch('localhost:8080/products/:id/comments')
-    const comment = await commentdata.json();
 
-    const userdata = await fetch(`localhost:8080/users/comment.userId`);
-    const user = await userdata.json();
+    const uri = event.target.baseURI;
+    // console.log('uri', typeof uri)
+    const splitId = uri.split("/")
+    const stringId=splitId[splitId.length -1]
+    const productId = parseInt(stringId, 10)
+    // console.log('split', typeof productId)
+
+
+    let content = document.querySelector('#content').value;
+    // console.log('CONTENT', content)
+
+    let commentData = await fetch(`http://localhost:8080/products/${productId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ content: content })
+    })
+
+    let comment = await commentData.json();
+    // console.log('comment', comment)
 
     //create comment list item
-    const commentLi = document.createElement('li');
+    const commentDiv = document.createElement('div');
     //create commentor from user
     const commentor = document.createElement('div');
     commentor.classList.add('commentor');
-    commentor.innerHTML = user.userName;
+    commentor.innerHTML = comment.user;
     //create timestamp
     const commentTime = document.createElement('div');
     commentTime.classList.add('comment-time');
-    comment.innerHTML = `on ${comment.createdAt}`
+    commentTime.innerHTML = comment.newComment.createdAt
     //create comment content
     const commentBody = document.createElement('div');
     commentBody.classList.add('comment-body');
-    commentBody.innerHTML = comment.content;
+    commentBody.innerHTML = comment.newComment.content;
 
     //append to li, then to existing ul
-    commentLi.appendChild(commentor, commentTime, commentBody);
-    document.querySelector('.comment-list').appendChild(commentLi);
+    commentDiv.appendChild(commentor);
+    commentDiv.appendChild(commentTime);
+    commentDiv.appendChild(commentBody);
+    document.querySelector('.new-comments').appendChild(commentDiv);
+
+    //reset placeholder text after submit
+    document.querySelector('#content').innerHTML = '';
 
 });
+
+
+
+})
