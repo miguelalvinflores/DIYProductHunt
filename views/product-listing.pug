@@ -16,7 +16,7 @@ block content
                             span=product.name
                         div.product-info__creator
                             span Created By:
-                                a(href=`/users/${product.userId}`)   #{user.firstName} #{user.lastName}
+                                a(href=`/users/${product.userId}`)   #{creator.firstName} #{creator.lastName}
                     div
                         div.product-info__description
                             p=product.description
@@ -29,9 +29,9 @@ block content
                 //- a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).user__pic
             div.user-info
                 div.user-info__name
-                    span #{user.firstName} #{user.lastName}
+                    span #{creator.firstName} #{creator.lastName}
                 div.user-info__stats
-                    span Products Created: #{userProducts.count}
+                    span Products Created: #{creatorProducts.count}
 
 
         div.comments

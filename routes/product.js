@@ -17,14 +17,14 @@ router.get('/:id(\\d+$\)', restoreUser, asyncHandler(async (req, res) => {
         {include: Comment}
     )
     const comments = await Comment.findAll({
-        where: id
+        where: {productId : id}
     })
+    const creator = await User.findOne({where: { id: product.userId }});
+    const creatorProducts = await Product.findAndCountAll({where: { userId: product.userId }})
 
-    const user = await User.findOne({where: { id: product.userId }});
+   //const currentUser =
 
-    const userProducts = await Product.findAndCountAll({where: { userId: product.userId }})
-    console.log(userProducts)
-    res.render('product-listing', { title: `${product.name}`, product, comments, user, userProducts })
+    res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts })
 
 }))
 
@@ -108,7 +108,7 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
 
 }))
 
-router.post('/:id(\\d+$\)', restoreUser, asyncHandler(async(req, res) => {
+router.post('/:id(\\d+$\)', restoreUser, requireAuth, asyncHandler(async(req, res) => {
     const productId = parseInt(req.params.id, 10);
 
     const product = await Product.findByPk(productId, {

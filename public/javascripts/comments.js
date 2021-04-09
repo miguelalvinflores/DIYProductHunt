@@ -49,7 +49,9 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
     commentDiv.appendChild(commentTime);
     commentDiv.appendChild(commentBody);
     document.querySelector('.new-comments').appendChild(commentDiv);
-    // console.log('commentor', commentor, commentBody, commentTime)
+
+    //reset placeholder text after submit
+    document.querySelector('#content').innerHTML = '';
 
 });
 
