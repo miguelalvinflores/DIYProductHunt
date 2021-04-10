@@ -6,17 +6,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.querySelector('.comment-form').addEventListener('submit', async(event) => {
     event.preventDefault();
 
-
+    //grab product's Id
     const uri = event.target.baseURI;
-    // console.log('uri', typeof uri)
     const splitId = uri.split("/")
     const stringId=splitId[splitId.length -1]
     const productId = parseInt(stringId, 10)
-    // console.log('split', typeof productId)
-
 
     let content = document.querySelector('#content').value;
-    // console.log('CONTENT', content)
 
     let commentData = await fetch(`http://localhost:8080/products/${productId}`, {
         method: 'POST',
@@ -25,6 +21,9 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
         },
         body: JSON.stringify({ content: content })
     })
+
+    //clear textarea
+    document.querySelector('#content').value = "";
 
     let comment = await commentData.json();
     // console.log('comment', comment)
