@@ -17,9 +17,9 @@ router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
         {include: Comment}
     )
     const comments = await Comment.findAll({
-
         where: {productId : id},
-        include: User
+        include: User,
+        order: [['updatedAt', 'DESC']]
     })
     const creator = await User.findOne({where: { id: product.userId }});
     const creatorProducts = await Product.findAndCountAll({where: { userId: product.userId }})
@@ -42,7 +42,7 @@ router.get('/new-product', csrfProtection, restoreUser, requireAuth, asyncHandle
     res.render('new-product', {
         title: "Launch New Product",
         product,
-        csrfToken: req.csrfToken(), 
+        csrfToken: req.csrfToken(),
         req
     })
 }));
@@ -97,7 +97,7 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
                 title: "Launch Product",
                 user,
                 errors,
-                csrfToken: req.csrfToken(), 
+                csrfToken: req.csrfToken(),
                 req
             })
         }
@@ -110,7 +110,7 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
             title: "Launch Product",
             product,
             errors,
-            csrfToken: req.csrfToken(), 
+            csrfToken: req.csrfToken(),
             req
         })
     }
@@ -133,7 +133,8 @@ router.post('/:id(\\d+$\)', restoreUser, requireAuth, asyncHandler(async(req, re
         userId,
         productId,
     });
-    res.json({newComment, user })
+    const date = newComment.createdAt.toLocaleDateString(undefined)
+    res.json({newComment, user, date })
     console.log('NEW COMMENT', newComment)
 
 
