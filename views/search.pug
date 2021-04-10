@@ -1,11 +1,10 @@
 extends layout.pug
 block head
     link(rel="stylesheet", href="/stylesheets/products.css")
-    script(type='text/javascript' src='/javascripts/products.js')
 block content
 
     div.product-list
-        p.product-list__label Most Recent
+        h1.product-list__label Search Results
         if products && products.length > 0
             each product in products
                 div.product-listing
@@ -28,9 +27,6 @@ block content
                             a(href=`/products/${product.id}`): button Details Page
                         div.product-listing__createdAt
                             span Launched: #{product.createdAt.toLocaleDateString(undefined)}
-    div.load-more    
-        div.load-more__container
-            label(for="count" id="count-label") Products Loaded: 
-            input(name="count" id="count" type="number" min="5" max ="25" step="5" value ="10")
-            button#load-10-more More Products
-    div(style="height: 100px")
+        else 
+            div.product-listing
+                p.product-info Sorry, none of our listings match that search.

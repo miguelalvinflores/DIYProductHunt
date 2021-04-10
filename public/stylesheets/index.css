@@ -252,6 +252,17 @@ button:hover {
 }
 
 
+button#search-btn {
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  /* margin-right: 0; */
+  padding-right: 0;
+  /* margin-left: 0; */
+  padding-left: 0;
+}
+
+
 #footer {
   position: fixed;
   bottom: 0;
@@ -267,5 +278,6 @@ button:hover {
   padding-bottom: 5px;
   margin-top: 200px;
 }
+
 
 
