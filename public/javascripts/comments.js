@@ -6,17 +6,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 document.querySelector('.comment-form').addEventListener('submit', async(event) => {
     event.preventDefault();
 
-
+    //grab product's Id
     const uri = event.target.baseURI;
-    // console.log('uri', typeof uri)
     const splitId = uri.split("/")
     const stringId=splitId[splitId.length -1]
     const productId = parseInt(stringId, 10)
-    // console.log('split', typeof productId)
-
 
     let content = document.querySelector('#content').value;
-    // console.log('CONTENT', content)
 
     let commentData = await fetch(`http://localhost:8080/products/${productId}`, {
         method: 'POST',
@@ -25,6 +21,9 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
         },
         body: JSON.stringify({ content: content })
     })
+
+    //clear textarea
+    document.querySelector('#content').value = "";
 
     let comment = await commentData.json();
     // console.log('comment', comment)
@@ -38,7 +37,7 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
     //create timestamp
     const commentTime = document.createElement('div');
     commentTime.classList.add('comment-time');
-    commentTime.innerHTML = comment.newComment.createdAt
+    commentTime.innerHTML = `on ${comment.date}`
     //create comment content
     const commentBody = document.createElement('div');
     commentBody.classList.add('comment-body');

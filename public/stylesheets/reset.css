@@ -20,6 +20,7 @@ body, header, nav {
   padding: 0;
   outline: 0;
   font-weight: normal;
+  text-decoration: none;
 }
 
 h1 {

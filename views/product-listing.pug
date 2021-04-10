@@ -25,6 +25,7 @@ block content
                 //- div.user-info__stats
                 //-     span Products Created: #{creatorProducts.count}
             div.comments
+
                 div.comments-container
                     form(class='comment-form' method='post' action=`/products/${product.id}/comments`)
                         input(class='productId' type='hidden' value = productId)
@@ -34,10 +35,10 @@ block content
                         button#comment-btn(type='submit') Submit
                 a(href=`/products/`): button#return-btn Products
 
-
+                div.new-comments
                 div.old-comments
                     each comment in comments
                         div.full-comment
                             div.commentor= comment.User.userName
-                            span.comment-time= comment.createdAt
+                            div.comment-time on #{comment.createdAt.toLocaleDateString(undefined)}
                             div.comment-body= comment.content

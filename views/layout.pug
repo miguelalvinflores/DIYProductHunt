@@ -13,19 +13,20 @@ html
 
   body
     header
-      a(href='/'): img(class="nav-logo" src="https://res.cloudinary.com/dbu0tmeuc/image/upload/v1617804832/diy-logo_zpclwx.png" alt="logo")
       nav
         div.nav-wrapper
+          a(href='/'): img(class="nav-logo" src="https://res.cloudinary.com/dbu0tmeuc/image/upload/v1617804832/diy-logo_zpclwx.png" alt="logo")
 
           ul.right
             li(class='nav-link')
-              form.search(action="" method='GET')
+              form.search(action="/search" method='POST')
                 input(class='search-input' id='search' type='text' name='search' placeholder='Search Products...')
-                label(for='search' class='search-label nav-link'): a(onclick='searchProducts()' href='/search') Search
+                button(type="submit") Search
+                //- label(for='search' class='search-label nav-link'): a(onclick='searchProducts()' href='/search') Search
             li(class='nav-link'): a(href="/products") Products
             //- li: a(href='/categories') Categories
             if locals.authenticated
-              li(class='nav-link'): a(href=`/users/${user.id}`): span Welcome #{user.firstName}!
+              li(class='nav-link'): a(href=`/users/${req.session.auth.userId}`): span Welcome #{req.session.auth.firstName}!
               li: form(method="post" action="/users/logout"): button(type="submit") Log Out
             else
               li(class='nav-link'): a(href="/users/login") Login
