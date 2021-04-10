@@ -27,7 +27,7 @@ html
             //- li: a(href='/categories') Categories
             if locals.authenticated && req
               li(class='nav-link'): a(href=`/users/${req.session.auth.userId}`): span Welcome #{req.session.auth.firstName}!
-              li: form(method="post" action="/users/logout"): button(type="submit") Log Out
+              li: form(method="post" action="/users/logout"): button(type="submit" id="log-out-btn") Log Out
             else
               li(class='nav-link'): a(href="/users/login") Login
               li(class='nav-link'): a(href="/users/signup") Sign Up
