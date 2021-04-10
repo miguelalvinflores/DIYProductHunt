@@ -29,7 +29,7 @@ It's a place for DIY enthusiasts to share and geek out about their latest creati
 
 <a href="https://diy-product-hunt.herokuapp.com/" target="_top">DIY Product Hunt Website</a>
 
-<-- Insert Usage GIF here -->
+<!-- Insert Usage GIF here -->
 
 ## Technologies
 
