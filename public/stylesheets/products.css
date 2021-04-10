@@ -90,6 +90,7 @@
     font-size: 30px;
     margin-right: 25px;
     margin-bottom: 20px;
+    line-height: 1;
 }
 
 .product-info__summary {
@@ -159,4 +160,8 @@
 .comment-form form {
     position: absolute;
     top: 250px;
+}
+
+h1.product-list__label {
+    font-family: Oswald, 'Times New Roman', Times, serif;
 }
