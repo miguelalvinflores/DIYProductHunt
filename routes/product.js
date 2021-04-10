@@ -139,4 +139,10 @@ router.post('/:id(\\d+$\)', restoreUser, requireAuth, asyncHandler(async(req, re
 
 }))
 
+router.post('/load', asyncHandler( async(req, res) => {
+    const {offset} = req.body
+    const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit: 10, offset, include: User })
+    res.json({products})
+}))
+
 module.exports = router;

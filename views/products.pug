@@ -1,6 +1,7 @@
 extends layout.pug
 block head
     link(rel="stylesheet", href="/stylesheets/products.css")
+    script(type='text/javascript' src='/javascripts/products.js')
 block content
 
     div.product-list
@@ -27,3 +28,4 @@ block content
                             a(href=`/products/${product.id}`): button Details Page
                         div.product-listing__createdAt
                             span Launched: #{product.createdAt.toLocaleDateString(undefined)}
+    button#load-10-more
