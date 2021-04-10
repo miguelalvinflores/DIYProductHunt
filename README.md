@@ -47,7 +47,7 @@ DIY Product Hunt is built using the following stack & libraries:
 
 1. _Javascript_
 2. _Pug_
-  * Pug is a template engine for Node.js. A template engine that allows Javascript to inject data and then produce HTML.
+   * Pug is a template engine for Node.js. A template engine that allows Javascript to inject data and then produce HTML.
 
 ### **Hosting**
 1. Heroku
