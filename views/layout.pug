@@ -19,12 +19,12 @@ html
           ul.right
             li(class='nav-link')
               form.search(action="/search" method='POST')
-                input(class='search-input' id='search' type='text' name='search' placeholder='Search Products...')
+                input(class='search-input' id='search' type='search' name='search' placeholder='Search Products...')
                 button(type="submit")#search-btn Search
                 //- label(for='search' class='search-label nav-link'): a(onclick='searchProducts()' href='/search') Search
             li(class='nav-link'): a(href="/products") Products
             //- li: a(href='/categories') Categories
-            if locals.authenticated
+            if locals.authenticated && req
               li(class='nav-link'): a(href=`/users/${req.session.auth.userId}`): span Welcome #{req.session.auth.firstName}!
               li: form(method="post" action="/users/logout"): button(type="submit") Log Out
             else

@@ -4,7 +4,8 @@ const { asyncHandler, csrfProtection } = require('./utils');
 const { User, Product, Comment } = require('../db/models')
 const { check, validationResult } = require('express-validator');
 const { requireAuth, restoreUser } = require('../auth');
-const {Sequelize} = require('sequelize')
+const {Sequelize} = require('sequelize');
+const { off } = require('../app');
 
 router.get('/', restoreUser, asyncHandler( async(req, res) => {
     const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit: 10, include: User})
@@ -140,8 +141,8 @@ router.post('/:id(\\d+$\)', restoreUser, requireAuth, asyncHandler(async(req, re
 }))
 
 router.post('/load', asyncHandler( async(req, res) => {
-    const {offset} = req.body
-    const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit: 10, offset, include: User })
+    const { offset, limit } = req.body
+    const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit, offset, include: User })
     res.json({products})
 }))
 

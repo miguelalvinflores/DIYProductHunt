@@ -95,6 +95,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
     }
 
+    const deleteProductBtns = document.querySelectorAll('.delete-product')
+    deleteProductBtns.forEach((button, i) => {
+        button.addEventListener('click', async (e) => {
+            e.preventDefault();
+            console.log(button.value)
+        })
+    });
+
+
     const deleteProfileBtn = document.querySelector('.delete-profile-btn')
     const deleteProfileBtnCancel = document.querySelector('.delete-btn-cancel')
 

@@ -4,14 +4,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     const load10More = document.querySelector('#load-10-more')
     if (load10More) {
         load10More.addEventListener('click', async (e) => {
-            console.log(offset)
+            const limitData = document.querySelector('#count')
+            const limit = parseInt(limitData.value)
+            console.log(limit)
             e.preventDefault();
             let newProductsData = await fetch(`http://localhost:8080/products/load`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ offset })
+                body: JSON.stringify({ offset, limit })
             })
             const newProducts = await newProductsData.json()
             const productList = document.querySelector('.product-list')

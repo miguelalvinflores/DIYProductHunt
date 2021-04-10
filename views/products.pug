@@ -28,4 +28,9 @@ block content
                             a(href=`/products/${product.id}`): button Details Page
                         div.product-listing__createdAt
                             span Launched: #{product.createdAt.toLocaleDateString(undefined)}
-    button#load-10-more
+    div.load-more    
+        div.load-more__container
+            label(for="count" id="count-label") Products Loaded: 
+            input(name="count" id="count" type="number" min="5" max ="25" step="5" value ="10")
+            button#load-10-more More Products
+    div(style="height: 100px")
