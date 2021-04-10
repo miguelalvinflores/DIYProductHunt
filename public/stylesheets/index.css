@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 body {
   font-family: "Source Sans Pro", 'Times New Roman', Times, serif;
-  color:rgb(33, 33, 33);
+  color: rgb(33, 33, 33);
   font-weight: 400;
   line-height: 1em;
   background-color: #F7F4F3;
@@ -132,7 +132,8 @@ body {
 
 button {
   display: inline-flex;
-  justify-content: center; /* center the content horizontally */
+  justify-content: center;
+  /* center the content horizontally */
   align-items: center;
   font-family: Oswald, 'Times New Roman', Times, serif;
   height: 35px;
@@ -251,24 +252,39 @@ button:hover {
   justify-content: center;
 }
 
-
 button#search-btn {
+  color: #5b2333;
   border: none;
   background-color: inherit;
-  font-size: 16px;
+  font-size: 17px;
   /* margin-right: 0; */
   padding-right: 0;
   /* margin-left: 0; */
   padding-left: 0;
 }
 
+button#search-btn:hover {
+  color: #5b2333;
+  color: tomato;
+}
+
+button#log-out-btn {
+  color: #5b2333;
+  border: none;
+  background-color: inherit;
+}
+
+button#log-out-btn:hover {
+  color: #5b2333;
+  color: tomato;
+}
 
 #footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(88,35,51,.5);
+  background-color: rgba(88, 35, 51, .5);
   text-align: center;
   color: white;
   height: 15px;
@@ -278,6 +294,3 @@ button#search-btn {
   padding-bottom: 5px;
   margin-top: 200px;
 }
-
-
-
