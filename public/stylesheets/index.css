@@ -166,6 +166,8 @@ button:hover {
 }
 
 #signup-errors {
+  display: block;
+  height: 20px;
   color: red;
   font-size: 10px
 }
