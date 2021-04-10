@@ -7,7 +7,7 @@ block content
         div.product-detail
             div.product-listing__detail
                 div.product-listing__image
-                    div
+                    div.img-wrapper
                         a(href=`/products/${product.id}`): img(src=`${product.photoURL}`).product-image
                     div.product-listing__info
                         div.product-info__name
@@ -25,15 +25,20 @@ block content
                 //- div.user-info__stats
                 //-     span Products Created: #{creatorProducts.count}
             div.comments
-                form(class='comment-form' method='post' action=`/products/${product.id}/comments`)
-                    input(class='productId' type='hidden' value = productId)
-                    label(for='content') #{user.userName}:
-                    textarea(name='content' id='content' placeholder='Leave a Comment' required)
-                    button(type='submit') Submit
-            div.new-comments
-            div.old-comments
-                each comment in comments
-                    div.full-comment
-                        div.commentor= comment.User.userName
-                        div.comment-time on #{comment.createdAt.toLocaleDateString(undefined)}
-                        div.comment-body= comment.content
+
+                div.comments-container
+                    form(class='comment-form' method='post' action=`/products/${product.id}/comments`)
+                        input(class='productId' type='hidden' value = productId)
+                        label(class = 'userName' for='content') #{user.userName}:
+                        div.submit-container
+                            textarea(class = "textarea" name='content' id='content' placeholder='Leave a Comment' required)
+                        button#comment-btn(type='submit') Submit
+                a(href=`/products/`): button#return-btn Products
+
+                div.new-comments
+                div.old-comments
+                    each comment in comments
+                        div.full-comment
+                            div.commentor= comment.User.userName
+                            div.comment-time on #{comment.createdAt.toLocaleDateString(undefined)}
+                            div.comment-body= comment.content
