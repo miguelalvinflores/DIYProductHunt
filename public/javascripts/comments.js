@@ -38,7 +38,7 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
     //create timestamp
     const commentTime = document.createElement('div');
     commentTime.classList.add('comment-time');
-    commentTime.innerHTML = comment.newComment.createdAt
+    commentTime.innerHTML = `on ${comment.date}`
     //create comment content
     const commentBody = document.createElement('div');
     commentBody.classList.add('comment-body');
