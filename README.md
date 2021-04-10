@@ -9,7 +9,6 @@ It's a place for DIY enthusiasts to share and geek out about their latest creati
 
 # Table of contents
 
-Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README. -->
 
 - [DIY Product Hunt](#diy-product-hunt)
 - [Brief Description](#brief-introduction)
@@ -19,6 +18,7 @@ Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README
     - [Backend](#backend)
     - [Frontend](#frontend)
 - [Footer](#footer)
+
 # DIY Product Hunt
 ![GitHub last commit](https://img.shields.io/github/last-commit/miguelalvinflores/DIYProductHunt)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/miguelalvinflores/DIYProductHunt)
