@@ -25,7 +25,7 @@ Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README
 
 
 
-## [Live Link](**https://diy-product-hunt.herokuapp.com/**)
+## ![Live Link](**https://diy-product-hunt.herokuapp.com/**)
 
 <-- Insert Usage GIF here -->
 
