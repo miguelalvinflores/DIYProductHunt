@@ -11,29 +11,142 @@
 .product-detail {
     display: block;
     background-color: white;
-    box-shadow: 1px 0 6px 0 rgba#f7f4f3;
-    border-radius: 3px;
+    /* box-shadow: 1px 0 6px 0 rgba#f7f4f3; */
+    /* border-radius: 3px; */
     max-width: 1150px;
-    padding: 20px;
+    padding: 60px;
+    margin-left: 150px;
 }
 
 .product-listing__info {
     display: block;
+
+    padding-right: 200px;
+
+    margin: 15px 20px 20px;
 }
 
 .product-info__name {
     display: block;
 }
 
+
+
 .old-comments {
     display: block;
     position: relative;
     border-radius: 5px;
-    box-shadow: 0 1px 2px rgb(233, 204, 204);
+    max-width: 75%;
+}
 
+.userName {
+    font-family: 'Source Sans', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
 }
 
 .full-comment {
     display: block;
     padding: 1em 0;
+}
+
+.img-wrapper {
+    margin-bottom: 7%;
+
+}
+
+.img-wrapper img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    max-height: 500px;
+    /* border: 2px solid #f7f4f3; */
+    border-radius: 10px;
+}
+
+.full-comment {
+    border: 2px solid #d31e0d;
+    border-radius: 10px;
+    margin: 1em;
+    padding: 1em;
+}
+
+.commentor {
+    font-family: "Source Sans", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.comment-time {
+    font-family: 'Source Sans', Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-style: italic;
+}
+
+.comment-body {
+    padding-top: 1em;
+}
+
+
+.product-info__name {
+    font-family: Oswald, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: #564d4a;
+    padding-bottom: 1em;
+}
+
+.product-info__creator {
+    font-family: 'Source Sans', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+
+
+.comments {
+    display: block;
+    /* border-bottom: 1px solid #e8e8e8; */
+    padding: 0 20px 20px;
+    min-width: 75%;
+    max-width: 90%;
+
+}
+
+submit-container {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#comment-btn {
+
+    margin: 0 20px 20px;
+    max-width: 40px;
+    max-height: 30px;
+    padding: 0;
+
+}
+
+
+.textarea {
+    position: relative;
+    width: 71%;
+    margin: 15px 20px 20px;
+    padding-top: 10px;
+
+    border-radius: 3px;
+
+}
+
+
+
+#return-btn {
+
+    margin: 0 20px 20px;
+    max-width: 40px;
+    max-height: 30px;
+    padding: 0;
+
+
 }

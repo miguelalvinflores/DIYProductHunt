@@ -85,8 +85,10 @@
 }
 
 .product-info__name {
-    font-weight: bold;
-    color: #564d4a;
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-weight: 200;
+    font-size: 14px;
+    color: #5b2333;
     font-size: 30px;
     margin-right: 25px;
     margin-bottom: 20px;
@@ -136,6 +138,7 @@
 
 .user-info__name {
     margin: 5px;
+    text-decoration: none;
 }
 
 .user-info__stats {
@@ -165,6 +168,7 @@
 h1.product-list__label {
     font-family: Oswald, 'Times New Roman', Times, serif;
 }
+
 
 #load-10-more {
     padding: 5px;
@@ -196,3 +200,14 @@ h1.product-list__label {
     padding: 5px;
     background-color: white;
 }
+
+.product-info__creator a {
+    text-decoration: none;
+    color: tomato
+}
+
+.product-info__creator a:hover {
+    text-decoration: none;
+    color:#5b2333
+}
+
