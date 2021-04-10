@@ -30,6 +30,7 @@ block content
                     label(for='content') #{user.userName}:
                     textarea(name='content' id='content' placeholder='Leave a Comment' required)
                     button(type='submit') Submit
+            div.new-comments
             div.old-comments
                 each comment in comments
                     div.full-comment
