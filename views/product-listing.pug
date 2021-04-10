@@ -35,5 +35,5 @@ block content
                 each comment in comments
                     div.full-comment
                         div.commentor= comment.User.userName
-                        div.comment-time= comment.createdAt
+                        div.comment-time on #{comment.createdAt.toLocaleDateString(undefined)}
                         div.comment-body= comment.content
