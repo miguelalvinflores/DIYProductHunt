@@ -18,9 +18,10 @@ html
 
           ul.right
             li(class='nav-link')
-              form.search(action="" method='GET')
+              form.search(action="/search" method='POST')
                 input(class='search-input' id='search' type='text' name='search' placeholder='Search Products...')
-                label(for='search' class='search-label nav-link'): a(onclick='searchProducts()' href='/search') Search
+                button(type="submit") Search
+                //- label(for='search' class='search-label nav-link'): a(onclick='searchProducts()' href='/search') Search
             li(class='nav-link'): a(href="/products") Products
             //- li: a(href='/categories') Categories
             if locals.authenticated
