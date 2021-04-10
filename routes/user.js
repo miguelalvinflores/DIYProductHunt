@@ -70,7 +70,8 @@ router.get('/signup', csrfProtection, asyncHandler(async(req, res, next) => {
   res.render("user-signup", {
     title: "Sign Up",
     user,
-    csrfToken: req.csrfToken()
+    csrfToken: req.csrfToken(), 
+    req
   })
 }));
 const userValidators = [
@@ -165,14 +166,15 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, 
       title: "Sign Up",
       user,
       errors,
-      csrfToken: req.csrfToken()
+      csrfToken: req.csrfToken(), 
+      req
     })
   }
 
 }))
 
 router.get('/login', csrfProtection, asyncHandler( async(req, res, next) => {
-  res.render('user-login', { title: "Login", csrfToken: req.csrfToken()})
+  res.render('user-login', { title: "Login", csrfToken: req.csrfToken(), req})
 }))
 
 const loginValidators = [
@@ -216,7 +218,7 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler( async(req, 
     errors = validatorErrors.array().map((error) => error.msg);
   }
 
-  res.render('user-login', { title: "login", userName, errors, csrfToken: req.csrfToken()})
+  res.render('user-login', { title: "login", userName, errors, csrfToken: req.csrfToken(), req})
 }))
 
 router.post('/logout', (req, res) => {

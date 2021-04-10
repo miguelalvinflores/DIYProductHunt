@@ -25,7 +25,7 @@ html
             li(class='nav-link'): a(href="/products") Products
             //- li: a(href='/categories') Categories
             if locals.authenticated
-              li(class='nav-link'): a(href=`/users/${user.id}`): span Welcome #{user.firstName}!
+              li(class='nav-link'): a(href=`/users/${req.session.auth.userId}`): span Welcome #{req.session.auth.firstName}!
               li: form(method="post" action="/users/logout"): button(type="submit") Log Out
             else
               li(class='nav-link'): a(href="/users/login") Login

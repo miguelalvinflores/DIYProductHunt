@@ -8,7 +8,7 @@ const {Sequelize} = require('sequelize')
 
 router.get('/', restoreUser, asyncHandler( async(req, res) => {
     const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit: 10, include: User})
-    res.render('products', { title: 'Products', products})
+    res.render('products', { title: 'Products', products, req})
 }))
 
 router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
@@ -28,10 +28,10 @@ router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
     if (res.locals.authenticated) {
         const userId  = req.session.auth.userId
         const user = await User.findByPk(userId)
-        res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user})
+        res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user, req})
     } else {
         const user = "Please sign in to comment"
-        res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user})
+        res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user, req})
     }
 
 
@@ -42,7 +42,8 @@ router.get('/new-product', csrfProtection, restoreUser, requireAuth, asyncHandle
     res.render('new-product', {
         title: "Launch New Product",
         product,
-        csrfToken: req.csrfToken()
+        csrfToken: req.csrfToken(), 
+        req
     })
 }));
 const productValidators = [
@@ -96,7 +97,8 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
                 title: "Launch Product",
                 user,
                 errors,
-                csrfToken: req.csrfToken()
+                csrfToken: req.csrfToken(), 
+                req
             })
         }
     } else{
@@ -108,7 +110,8 @@ router.post('/new-product', productValidators, restoreUser, requireAuth, csrfPro
             title: "Launch Product",
             product,
             errors,
-            csrfToken: req.csrfToken()
+            csrfToken: req.csrfToken(), 
+            req
         })
     }
 
