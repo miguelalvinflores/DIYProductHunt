@@ -17,9 +17,9 @@ router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
         {include: Comment}
     )
     const comments = await Comment.findAll({
-
         where: {productId : id},
-        include: User
+        include: User,
+        order: [['updatedAt', 'DESC']]
     })
     const creator = await User.findOne({where: { id: product.userId }});
     const creatorProducts = await Product.findAndCountAll({where: { userId: product.userId }})
