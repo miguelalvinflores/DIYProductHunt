@@ -8,7 +8,7 @@ module.exports = {
 
 
     const usersArray = [{ userName: "DemoUser", emailAddress: "demo@gmail.com", firstName: "Demo", lastName: "User", profilePicURL: 'http://atlas-content-cdn.pixelsquid.com/stock-images/crash-test-dummy-head-XordO9A-600.jpg', hashedPW: "D756IK", createdAt: faker.date.past(), updatedAt: new Date() }]
-    
+
     for (let i = 0; i < 9; i++) {
       const firstName = faker.name.firstName()
       const lastName = faker.name.lastName()
@@ -24,7 +24,7 @@ module.exports = {
       }
       usersArray.push(user);
     }
-    
+
     const users = await queryInterface.bulkInsert(
       "Users",
       usersArray,
@@ -279,7 +279,7 @@ module.exports = {
         },
         {
           name: "Glass Tiger Figurine",
-          photoURL: "https://i.etsystatic.com/10592261/r/il/9f1a52/732965061/il_794xN.732965061_b7bt.jpg",
+          photoURL: "https://i.etsystatic.com/6329281/r/il/8be9d0/246499951/il_794xN.246499951.jpg",
           summary: "Tiger Figurine Hand Blown Glass Gold Crystal Sculpture",
           description: "The unique attributes of this impressive animal are well represented in this hand crafted figurine. I make it entirely by hand from borosilicate crystal. The brilliant rainbow of colors is created when I apply pure gold to the glass while it is still molten.",
           userId: users[9].id,
@@ -309,7 +309,7 @@ module.exports = {
       { returning: true }
     );
     const comments = [];
-    
+
     const commentMaker = () => {
       const randNum = Math.floor(Math.random() * 3.5);
       const comments = [
