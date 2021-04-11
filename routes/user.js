@@ -9,15 +9,16 @@ const faker = require('faker')
 
 
 router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
-  const demoUser = await User.findByPk(1);
-  const demoProducts = await Product.findAll({where: { userId: 1}})
+  const demoUser = await User.findOne({ where: { userName: "DemoUser"}});
+  const demoUserId = demoUser.id
+  const demoProducts = await Product.findAll({ where: { userId: demoUserId}})
   const newDemoProducts = [
     {
       name: 'Authentic Sloyd Tool Cabinet',
       photoURL: `https://cdn.popularwoodworking.com/wp-content/uploads/2020/01/lead-glam1a-1.jpg`,
       summary: 'This reproduction is a fun build and a great gift for a budding woodworker.',
       description: '“Hand and heart lead to life.” was an early motto of the North Bennet Street Industrial School (NBIS), now called the North Bennet Street School (NBSS). Founded in 1885 by Pauline Agassiz Shaw, a progressive Boston philanthropist, the school was established to “train students for careers in traditional trades that use hand skills in concert with evolving technology, to preserve and advance craft traditions and promote greater appreciation of craftsmanship.” The school started off as a social and educational experiment designed to help residents in the North End of Boston, many of whom were immigrants, acclimate to America, learn a trade, socialize and become better citizens. In pursuit of this goal Shaw learned of Otto Salomon’s work at the Sloyd School in Naas Sweden and was instrumental in bringing Swedish Educational Sloyd to America. Under the direction of Gustaf Larsson, a graduate of Naas, he helped adapt Educational Sloyd to American needs at NBIS as a training lab and also went on to direct the Sloyd Training School in Boston for training teachers in manual arts instruction. Moving beyond traditional apprenticeships Educational Sloyd was a structured program wherein hand skills are taught by building a series of model projects, deliberately chosen to result in useful household objects prescribed in a specific sequence that helped bolster hand skills, mental skills, confidence and prepare for the next exercise. The goal was to train the “whole person”-the body and the mind working in concert to produce better work, an appreciation for hand work and improve overall well-being.',
-      userId: 1,
+      userId: demoUserId,
       createdAt: faker.date.past(),
       updatedAt: new Date(),
     },
@@ -26,7 +27,7 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
       photoURL: 'https://cdn.popularwoodworking.com/wp-content/uploads/2020/01/awrt50-e1615305217419.jpg',
       summary: 'As easy to use as it is to build.',
       description: 'Sometimes, less really is more. Take router tables for instance. It’s not at all difficult to ring up a $1000 tab for a manufactured router table, complete with a new router, loaded with convenience, durability, adjustability, and precision. But to me, the compelling thing about a router table is that it converts a portable power tool into a stationary power tool and thus expands its utility and versatility. A router table can be simple and quite inexpensive to make without sacrificing functionality. A basic table can be just as versatile, accurate and easy to use as one of those $1000 grandees but cost far less. I’ve just finished a $100 router table (excluding the router). I bought most of the materials and hardware at a local home center. There’s no router mounting plate to buy; the router attaches directly to the hinged top.',
-      userId: 1,
+      userId: demoUserId,
       createdAt: faker.date.past(),
       updatedAt: new Date(),
     },
@@ -35,7 +36,7 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
       photoURL: 'https://cdn.popularwoodworking.com/wp-content/uploads/2020/01/1204_3_drillpresstable_opener.jpg',
       summary: 'It’s accurate, easy to use and built to last.',
       description: 'There are all manner of drill press tables and fences, from a simple 2×4 clamped to the machine’s cast iron table to ones with gadgets and gizmos galore. The latter is not my style, so when the time came to replace my drill press table the list of requirements was short: Accuracy.The table must be flat and stay flat, and the fence must be square to the table. Ease of use.My prior table had a fence fixed to the table itself, so every fence adjustment required loosening and tightening F - style clamps to the irregular bottom of the cast iron table. Longevity.Though I tried not to, I eventually fouled my old table by drilling into it too many times. Workholding.There are times when I need to clamp down my work but normal clamps won’t reach. With these issues in mind, I developed the drill press table seen here.',
-      userId: 1,
+      userId: demoUserId,
       createdAt: faker.date.past(),
       updatedAt: new Date(),
     }
