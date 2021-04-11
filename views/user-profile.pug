@@ -66,13 +66,15 @@ block content
                     tr.profile-products__table__row-head
                         th Product Name
                         th Created On
-                        th Unlist
+                        if req.session.auth.userId === user.id
+                            th Unlist
                 tbody
                     each product, index in user.Products
                         tr.profile-products__table__row-data
                             td.table__product-name: a(href=`/products/${product.id}`) #{product.name}
                             td.table__date #{product.createdAt.toLocaleDateString(undefined)}
-                            td: button(class="delete-product" id=`delete-product-${index}` value=`${product.id}`): img( id='trashcan' src='https://res.cloudinary.com/dbu0tmeuc/image/upload/v1618169941/trash-can-1778449-1515973_qx4ncv.png')
+                            if req.session.auth.userId === user.id
+                                td: button(class="delete-product" id=`delete-product-${index}` value=`${product.id}`): img( id='trashcan' src='https://res.cloudinary.com/dbu0tmeuc/image/upload/v1618169941/trash-can-1778449-1515973_qx4ncv.png')
         div.profile-delete
             if req && req.session && req.session.auth && req.session.auth.userId === user.id
                 a(href=`/users/${user.id}/delete`): button.delete-profile-btn Delete Profile
