@@ -8,6 +8,7 @@ const Op = Sequelize.Op;
 
 router.post('/', restoreUser, csrfProtection, asyncHandler( async (req, res) => {
     const { search } = req.body
+    const pugFile = 'index'
     if (search) {
         const products = await Product.findAll({
             where: {
@@ -21,10 +22,10 @@ router.post('/', restoreUser, csrfProtection, asyncHandler( async (req, res) => 
             include: User
         })
         console.log(products)
-        res.render('search', { title: 'Search Results', products, csrfToken: req.csrfToken(), req })
+        res.render('search', { title: 'Search Results', pugFile, products, csrfToken: req.csrfToken(), req })
     } else {
         const products = [];
-        res.render('search', { title: 'Search Results', products, csrfToken: req.csrfToken(), req })
+        res.render('search', { title: 'Search Results', pugFile, products, csrfToken: req.csrfToken(), req })
     }
 }))
 
