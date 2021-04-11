@@ -4,7 +4,7 @@
 html {
   background-attachment:fixed;
   height:100%;
-  background: linear-gradient( #e6dbd8, white);
+  background: linear-gradient( #fdf0e7, white);
 }
 
 body {
@@ -13,7 +13,8 @@ body {
   font-weight: 400;
   line-height: 1em;
   /* background-color: #F7F4F3; */
-
+  margin-left: 0px;
+  margin-right: 0px
 }
 
 .modal {

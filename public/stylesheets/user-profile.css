@@ -1,6 +1,7 @@
 .profile {
     position: relative;
-    left: 15%;
+    align-content: center;
+    /* left: 15%; */
     top: 150px;
     display: grid;
     grid-template-columns: 40% 20% 20% 20%;
@@ -9,8 +10,12 @@
     height: 500px;
     width: 900px;
     background-color: white;
-    border: 3px solid rgb(235, 235, 235);
+    /* border: 3px solid rgb(235, 235, 235); */
+    box-shadow: 0px 6px 8px 2px rgb(237, 237, 237);
     border-radius:3px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+
 }
 
 .profile-user__pic-container {

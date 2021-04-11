@@ -11,13 +11,21 @@ nav {
 }
 
 .nav-wrapper {
-    border-top: 3px solid #f7f7f7;
-    border-bottom: 3px solid #f7f7f7;
-    background-color: white;
+    /* border-top: 3px solid #f7f7f7; */
+    border-bottom: 5px solid #5b2333;
+    /* background-attachment:fixed;
+    height:100%; */
+    /* background-image: linear-gradient( to right #e6dbd8, white); */
     height: 135px;
-    width: 100%;
+    /* width: 100%; */
     position: relative;
     top: 65px;
+    background-color: transparent;
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent, white
+    );
 }
 
 ul.right {
@@ -27,13 +35,13 @@ ul.right {
 }
 
 .nav-logo {
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     display: block;
     position: absolute;
-    top: -75px;
+    top: -20px;
     z-index: 1;
-    padding-left: 90px;
+    padding-left: 120px;
 }
 
 .nav-wrapper li {
