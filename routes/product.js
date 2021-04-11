@@ -147,4 +147,14 @@ router.post('/load', asyncHandler( async(req, res) => {
     res.json({products})
 }))
 
+router.post('/delete', asyncHandler( async(req, res) => {
+    const { userId, id } = req.body
+    console.log(userId, id)
+    const productDelete = await Product.findByPk(id)
+    await Comment.destroy({ where: { productId: id }})
+    await productDelete.destroy()
+    const updatedProducts = await Product.findAll({ where: {userId}})
+    res.json({updatedProducts})
+}))
+
 module.exports = router;
