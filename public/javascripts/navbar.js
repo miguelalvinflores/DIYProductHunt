@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const signupNavBtn = document.querySelector(".api-signup");
     const signupCancelBtn = document.querySelector(".signup-cancel")
 
-    modalSignup = document.querySelector(".modal-signUp")
+    modalSignup = document.querySelector(".modal-sign-up")
 
     if(signupNavBtn) {
         signupNavBtn.addEventListener('click', (e) => {
@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
     }
 
-    if(signupCancelBtn) [
+    if(signupCancelBtn) {
         signupCancelBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            modalSignup.style.display = "none;"
+            modalSignup.style.display = "none"
         })
-    ]
+    }
 })

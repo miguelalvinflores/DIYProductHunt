@@ -5,7 +5,7 @@ html
       link(rel='icon' type='favicon' href='https://res.cloudinary.com/dbu0tmeuc/image/upload/v1617802070/favicon_ww2gmr.ico')
       link(rel='stylesheet' href='/stylesheets/index.css')
       link(rel='stylesheet' href= '/stylesheets/navbar.css')
-      script(type='text/javascript' src='/javascripts/navbar.js')
+
 
       block head
 
@@ -30,7 +30,7 @@ html
               li: form(method="post" action="/users/logout"): button(type="submit" id="log-out-btn") Log Out
             else
               li(class='nav-link api-login'): a(href="/users/login") Login
-              li(class='nav-link api-signup') Sign Up
+              li(class='nav-link '): a.api-signup Sign Up
 
             li(class='nav-link'): a(href='/about') About
     include user-signup.pug
@@ -38,3 +38,4 @@ html
     block footer
       #footer
         span DIY Product Hunt ©Ben-Laura-Miguel-Natalie
+    script(type='text/javascript' src='/javascripts/navbar.js')
