@@ -1,14 +1,15 @@
 .profile {
     position: relative;
-    left: 10%;
-    top: 100px;
+    left: 15%;
+    top: 150px;
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    width: 80%;
-    background-color: whitesmoke;
-    border: 3px solid #999999;
-    border-radius: 15px;
+    height: 500px;
+    width: 900px;
+    background-color: white;
+    border: 3px solid rgb(235, 235, 235);
+    border-radius:3px;
 }
 
 .profile-user {
@@ -32,6 +33,14 @@
 
 .profile-user__name, .profile-user__username, .profile-user__contact, .profile-user__joinday {
     margin: 5px;
+}
+
+.profile-user__name {
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-weight: 300;
+    color:rgb(82, 82, 82);
+    letter-spacing: 2px;
 }
 
 .modal-edit-profile {
@@ -99,14 +108,22 @@
     justify-content: space-between;
 }
 
+.profile-products__user-labels span{
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: 100;
+    color:rgb(184, 184, 184);
+    letter-spacing: 1px;
+}
+
 .profile-products__table-container {
-    border: 3px solid;
     margin: 15px;
     margin-bottom: 50px;
     overflow: auto;
     max-height: 300px;
-    border: 3px solid #999999;
-    border-radius: 15px;
+    width: 500px;
+    border: 1px solid rgb(184, 184, 184);
+    border-radius: 3px;
     background-color: white;
 }
 
@@ -116,6 +133,12 @@
 
 .profile-products__table-row {
     text-align: center;
+}
+
+.profile-products__table__row-data a{
+    text-decoration: none;
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    color: #5b2333;
 }
 
 .profile-products__user-labels>span {
@@ -131,7 +154,7 @@ tr:nth-child(even) {
 }
 
 button {
-    width: 150px;
+    width: 0px;
 }
 
 /* DELETE  */
@@ -143,9 +166,15 @@ button {
 }
 
 .delete-product {
+    color: #5b2333;
     border: none;
-    background-color: inherit;
+    background-color: transparent;
     padding-right: 5px;
     padding-left: 5px;
     margin: 0;
+}
+
+.delete-product:hover {
+    color: tomato;
+    background-color:none;
 }

@@ -14,6 +14,7 @@ nav {
     border-top: 3px solid #f7f7f7;
     border-bottom: 3px solid #f7f7f7;
     background-color: white;
+    height: 135px;
     width: 100%;
     position: relative;
     top: 65px;
@@ -42,8 +43,8 @@ ul.right {
     color: #5b2333;
     list-style-type: none;
     display: inline-block;
-    padding-left: 20px;
-    padding-top: 40px;
+    padding-left: 40px;
+    padding-top: 65px;
     padding-right: 35px;
     flex-wrap: wrap
 }

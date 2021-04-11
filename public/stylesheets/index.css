@@ -143,7 +143,6 @@ button {
   background-color: transparent;
   border: 1px solid rgb(184, 184, 184);
   border-radius: 3px;
-  margin: 10px 10px;
   padding: 3%;
   width: auto;
   max-width: 300px;
@@ -261,6 +260,11 @@ button#search-btn {
   padding-right: 0;
   /* margin-left: 0; */
   padding-left: 0;
+  margin-right: -15px;
+  font-family: Oswald, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 16px;
+
 }
 
 button#search-btn:hover {
@@ -272,6 +276,11 @@ button#log-out-btn {
   color: #5b2333;
   border: none;
   background-color: inherit;
+  font-family: Oswald, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: -20px;
+  margin-right: -20px
 }
 
 button#log-out-btn:hover {
