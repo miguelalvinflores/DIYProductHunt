@@ -223,8 +223,8 @@ h1.product-list__label {
 }
 
 .product-info__creator {
-    padding-top: 5px;
-    padding-left: 30px;
+    padding-top: 15px;
+    /* padding-left: 30px; */
 }
 
 .product-info__creator a {

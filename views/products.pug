@@ -17,9 +17,9 @@ block content
                             div.product-info
                                 div.product-info__name
                                     span=product.name
-                                div.product-info__creator
-                                    span Created By:
-                                        a(href=`/users/${product.userId}`)   #{product.User.firstName} #{product.User.lastName}
+                                    div.product-info__creator
+                                        span Created By:
+                                            a(href=`/users/${product.userId}`)   #{product.User.firstName} #{product.User.lastName}
                             div
                                 div.product-info__summary
                                     span=product.summary
