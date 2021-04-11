@@ -17,6 +17,9 @@ block content
         p It's a place for DIY enthusiasts to share and geek out about their latest creations and foster a client base.
         p Its a place for collectors to find cool products that may not be available on the traditional marketplace.
       div.home-container__buttons
-        a(href='/users/demo-login'): button Demo Login
-        button.api-login User Login
-        button.api-signup Sign Up
+        if req.session.auth
+          div 
+        else
+          a(href='/users/demo-login'): button Demo Login
+          button.api-login User Login
+          button.api-signup Sign Up
