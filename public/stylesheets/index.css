@@ -8,6 +8,7 @@ body {
   background-color: #F7F4F3;
 }
 
+
 .modal {
   display: block;
   /* Hidden by default */
@@ -279,5 +280,6 @@ button#search-btn {
   margin-top: 200px;
 }
 
-
-
+a {
+  text-decoration: none;
+}
