@@ -5,6 +5,7 @@ html {
   background-attachment:fixed;
   height:100%;
   background: linear-gradient( #fdf0e7, white);
+  background-repeat: no-repeat;
 }
 
 body {
@@ -225,13 +226,16 @@ button:hover {
   position: relative;
   top: 100px;
   left: 10%;
-  border: 3px solid #999999;
-  border-radius: 15px;
+  /* border: 3px solid #999999;
+  border-radius: 15px; */
+  box-shadow: 0px 6px 8px 2px rgb(237, 237, 237);
+  border-radius:3px;
   width: 80%;
-  background-color: whitesmoke;
+  background-color: white;
   align-items: center;
   display: flex;
   flex-direction: column;
+  margin-top: 50px;
 }
 
 .home-container__content {
@@ -245,8 +249,9 @@ button:hover {
 
 .home-container__content>h1 {
   font-family: Oswald, 'Times New Roman', Times, serif;
-  font-size: 3em;
+  font-size: 2em;
   color: #5b2333;
+  padding-top: 30px;
 }
 
 .home-container__content>p {
@@ -254,6 +259,18 @@ button:hover {
   font-size: 1em;
   color: #564d4aff;
   text-align: center;
+  margin: 5px;
+  font-weight: 90;
+  font-style: italic;
+}
+
+p.happy-hunting {
+  font-family: Oswald, 'Times New Roman', Times, serif;
+  font-size: 1em;
+  color: tomato;
+  text-align: center;
+  margin: 5px;
+  font-weight: 90;
 }
 
 .home-container__buttons {
@@ -298,6 +315,11 @@ button#log-out-btn:hover {
   color: tomato;
 }
 
+.home-button {
+  margin: 20px;
+
+}
+
 #footer {
   position: fixed;
   bottom: 0;
@@ -320,6 +342,3 @@ button#log-out-btn:hover {
 a {
   text-decoration: none;
 }
-
-
-
