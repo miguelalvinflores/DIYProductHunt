@@ -74,8 +74,9 @@ block content
                             tr.profile-products__table__row-data
                                 td: a(href=`/products/${product.id}`) #{product.name}
                                 td.table__date #{product.createdAt.toLocaleDateString(undefined)}
-                                 if req && req.session && req.session.auth && req.session.auth.userId === user.id
+                                 if req && req.session && req.session.auth && req.session.auth.userId === user.id  
                                     td:  button(class="delete-product" id=`delete-product-${index}` value=`${product.id}`) Delete
+
         if req && req.session && req.session.auth && req.session.auth.userId === user.id
             div.profile-delete
                 a(href=`/users/${user.id}/delete`): button.delete-profile-btn Delete Profile

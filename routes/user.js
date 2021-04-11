@@ -181,7 +181,7 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
       updatedAt: new Date(),
     }
   ]
-  const deleteProductsAndComments = async () => {
+  const deleteProductsAndComments = () => {
     demoProducts.forEach(async product => {
       const demoProductComments = await Comment.findAll({ where: {productId: product.id }})
       console.log(demoProductComments)
@@ -193,39 +193,39 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
     return
   }
   deleteProductsAndComments()
-    .then(() =>{
-      setImmediate(() => {
-        newDemoProducts.forEach(async product => {
-          return await Product.create(product)
-        });
-        return
-      })
-    }).then(() => {
-      setTimeout(() => {
-        newDemoComments.forEach(async (comment, i) => {
-          try {
-            await Comment.create(comment)
-            console.log(i + 1)
-          } catch (error) {
+  newDemoProducts.forEach(async product => {
+    await Product.create(product)
+  });
+    // .then(() =>{
+    //   setImmediate(() => {
+    //     return
+    //   })
+    // }).then(() => {
+    //   setTimeout(() => {
+    //     newDemoComments.forEach(async (comment, i) => {
+    //       try {
+    //         await Comment.create(comment)
+    //         console.log(i + 1)
+    //       } catch (error) {
             
-          }
-        });
-      }, 10000)
-      return
-    }).then(() => {
-      setTimeout(() => {
-        newDemoProductComments.forEach(async (comment, i) => {
-          try {
-            await Comment.create(comment)
-            console.log(i + 11)
-          } catch (error) {
+    //       }
+    //     });
+    //   }, 10000)
+    //   return
+    // }).then(() => {
+    //   setTimeout(() => {
+    //     newDemoProductComments.forEach(async (comment, i) => {
+    //       try {
+    //         await Comment.create(comment)
+    //         console.log(i + 11)
+    //       } catch (error) {
             
-          }
-        });
-        return
-      }, 10000)
-      return
-      }).catch(e => console.log(e))
+    //       }
+    //     });
+    //     return
+    //   }, 10000)
+    //   return
+    //   }).catch(e => console.log(e))
   loginUser(req, res, demoUser); 
   res.redirect('/products');
 }))
