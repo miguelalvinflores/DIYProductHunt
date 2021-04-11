@@ -351,7 +351,7 @@ const userValidators = [
     .isLength({ max: 50 })
     .withMessage('Confirm Password must not be more than 50 characters long')
     .custom((value, { req }) => {
-      if (value !== req.body.password) {
+      if (value !== req.body.passwordSignup) {
         throw new Error('Confirm Password does not match Password');
       }
       return true;
