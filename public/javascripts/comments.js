@@ -30,6 +30,7 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
 
     //create comment list item
     const commentDiv = document.createElement('div');
+    commentDiv.classList.add('full-comment');
     //create commentor from user
     const commentor = document.createElement('div');
     commentor.classList.add('commentor');
@@ -49,8 +50,6 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
     commentDiv.appendChild(commentBody);
     document.querySelector('.new-comments').appendChild(commentDiv);
 
-    //reset placeholder text after submit
-    document.querySelector('#content').innerHTML = '';
 
 });
 

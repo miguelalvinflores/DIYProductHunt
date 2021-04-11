@@ -39,44 +39,40 @@ block content
                         button(type="submit").delete-btn Delete Profile
                         button.delete-btn-cancel Cancel
     div.profile
-        div.profile-user
-            div.profile-user__pic-container
-                a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).profile-user__pic#image
-            div.profile-user__name
-                span#full-name #{user.firstName} #{user.lastName}
-            div.profile-user__username
-                span#username Username: #{user.userName}
-            div.profile-user__contact
-                span#contact Contact Creator: #{user.emailAddress}
-            div.profile-user__joinday
-                span Joined: 🎂 #{date}
+        div.profile-user__pic-container
+            a(href=`/users/${user.id}`): img(src=`${user.profilePicURL}`).profile-user__pic#image
+        div.profile-user__name
+            span#full-name #{user.firstName} #{user.lastName}
+        div.profile-user__username
+            span#username #{user.userName}
+        div.profile-user__contact
+            span#contact Contact Me: #{user.emailAddress}
+        div.profile-user__joinday
+            span Member Since: 🎂 #{date}
+        div.profile-user__edit
             if req.session.auth && req.session.auth.userId === user.id
-                div.profile-user__edit
-                    button.edit-profile-btn Edit Profile
-        div.profile-products
+                button.edit-profile-btn Edit Profile
+        div.products-label
             if req.session.auth && req.session.auth.userId === user.id
-                div.profile-products__user-labels
-                    span Your Products
-                    a(href=`/products/new-product`): button Create Product
+                span Your Products
             else
-                div.profile-products__guest-labels
-                    span #{user.firstName}'s Products
-            div.profile-products__table-container
-                table.profile-products__table
-                    thead
-                        tr.profile-products__table__row-head
-                            th Product Name
-                            th Created On
-                            if req && req.session && req.session.auth && req.session.auth.userId === user.id
-                                input(type="hidden" value=`${user.id}` id='user-id-delete')
-                    tbody#product-table
-                        each product, index in user.Products
-                            tr.profile-products__table__row-data
-                                td: a(href=`/products/${product.id}`) #{product.name}
-                                td.table__date #{product.createdAt.toLocaleDateString(undefined)}
-                                 if req && req.session && req.session.auth && req.session.auth.userId === user.id  
-                                    td:  button(class="delete-product" id=`delete-product-${index}` value=`${product.id}`) Delete
-
-        if req && req.session && req.session.auth && req.session.auth.userId === user.id
-            div.profile-delete
+                span #{user.firstName}'s Products
+        div.create-product-button
+            if req.session.auth && req.session.auth.userId === user.id
+                a(href=`/products/new-product`): button Create!
+        div.profile-products__table-container
+            table.profile-products__table
+                thead
+                    tr.profile-products__table__row-head
+                        th Product Name
+                        th Created On
+                        th Unlist
+                tbody
+                    each product, index in user.Products
+                        tr.profile-products__table__row-data
+                            td.table__product-name: a(href=`/products/${product.id}`) #{product.name}
+                            td.table__date #{product.createdAt.toLocaleDateString(undefined)}
+                            td: button(class="delete-product" id=`delete-product-${index}` value=`${product.id}`): img( id='trashcan' src='https://res.cloudinary.com/dbu0tmeuc/image/upload/v1618169941/trash-can-1778449-1515973_qx4ncv.png')
+        div.profile-delete
+            if req && req.session && req.session.auth && req.session.auth.userId === user.id
                 a(href=`/users/${user.id}/delete`): button.delete-profile-btn Delete Profile

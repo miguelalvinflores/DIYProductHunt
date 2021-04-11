@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+html {
+  background-attachment:fixed;
+  height:100%;
+  background: linear-gradient( #fdf0e7, white);
+}
+
 body {
   font-family: "Source Sans Pro", 'Times New Roman', Times, serif;
   color: rgb(33, 33, 33);
   font-weight: 400;
   line-height: 1em;
-  background-color: #F7F4F3;
+  /* background-color: #F7F4F3; */
+  margin-left: 0px;
+  margin-right: 0px
 }
 
 
@@ -144,7 +153,6 @@ button {
   background-color: transparent;
   border: 1px solid rgb(184, 184, 184);
   border-radius: 3px;
-  margin: 10px 10px;
   padding: 3%;
   width: auto;
   max-width: 300px;
@@ -262,6 +270,11 @@ button#search-btn {
   padding-right: 0;
   /* margin-left: 0; */
   padding-left: 0;
+  margin-right: -1px;
+  font-family: Oswald, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 16px;
+
 }
 
 button#search-btn:hover {
@@ -273,6 +286,11 @@ button#log-out-btn {
   color: #5b2333;
   border: none;
   background-color: inherit;
+  font-family: Oswald, 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: -20px;
+  margin-right: -20px
 }
 
 button#log-out-btn:hover {
@@ -297,8 +315,11 @@ button#log-out-btn:hover {
 
 }
 
+
+
 a {
   text-decoration: none;
 }
+
 
 
