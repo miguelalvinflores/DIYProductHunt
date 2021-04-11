@@ -7,6 +7,7 @@ const { loginUser, logoutUser, requireAuth, restoreUser } = require('../auth');
 const bcrypt = require('bcryptjs')
 const faker = require('faker')
 
+
 router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
   const demoUser = await User.findByPk(1);
   const demoProducts = await Product.findAll({where: { userId: 1}})
@@ -207,7 +208,7 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
     //         await Comment.create(comment)
     //         console.log(i + 1)
     //       } catch (error) {
-            
+
     //       }
     //     });
     //   }, 10000)
@@ -219,14 +220,14 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
     //         await Comment.create(comment)
     //         console.log(i + 11)
     //       } catch (error) {
-            
+
     //       }
     //     });
     //     return
     //   }, 10000)
     //   return
     //   }).catch(e => console.log(e))
-  loginUser(req, res, demoUser); 
+  loginUser(req, res, demoUser);
   res.redirect('/products');
 }))
 
@@ -238,8 +239,9 @@ router.get('/:id(\\d+$\)', csrfProtection, restoreUser, asyncHandler(async (req,
       model: Product
     }
   });
+  const pugFile = "user-profile"
   const date = user.createdAt.toLocaleDateString(undefined)
-  res.render('user-profile', { title: `${user.firstName}`, user, date, req, csrfToken: req.csrfToken() })
+  res.render('user-profile', { title: `${user.firstName}`, pugFile, user, date, req, csrfToken: req.csrfToken() })
 }));
 
 router.post('/:id(\\d+\)/delete', csrfProtection, restoreUser, asyncHandler(async (req, res) => {
@@ -283,17 +285,18 @@ router.post('/:id(\\d+\)/delete', csrfProtection, restoreUser, asyncHandler(asyn
 }))
 
 /* GET users listing. */
-router.get('/signup', csrfProtection, asyncHandler(async(req, res, next) => {
-  const user = await User.build();
-  res.render("user-signup", {
-    title: "Sign Up",
-    user,
-    csrfToken: req.csrfToken(),
-    req
-  })
-}));
+// router.get('/signup', csrfProtection, asyncHandler(async(req, res, next) => {
+//   const user = await User.build();
+
+//   res.render("user-signup", {
+//     title: "Sign Up",
+//     user,
+//     csrfToken: req.csrfToken(),
+//     req
+//   })
+// }));
 const userValidators = [
-  check("emailAddress")
+  check("emailAddressSignup")
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email')
@@ -307,7 +310,7 @@ const userValidators = [
           }
         });
     }),
-  check("userName")
+  check("userNameSignup")
     .exists({ checkFalsy: true })
     .withMessage('Please provide a username')
     .isLength({ max: 25 })
@@ -320,22 +323,22 @@ const userValidators = [
           }
         });
     }),
-  check("firstName")
+  check("firstNameSignup")
     .exists({ checkFalsy: true })
     .withMessage('Please provide a First mame.')
     .isLength({ max: 30 })
     .withMessage("First name must be 30 characters or less."),
-  check("lastName")
+  check("lastNameSignup")
     .exists({ checkFalsy: true })
     .withMessage('Please provide a Last mame.')
     .isLength({ max: 30 })
     .withMessage("Last name must be 30 characters or less."),
-  check("profilePicURL")
+  check("profilePicURLSignup")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a image URL")
     .matches(/^.+[jpe?g png svg]$/)
     .withMessage("Must be a link to a valid file format (.jpg, .png, .svg)."),
-  check('password')
+  check('passwordSignup')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Password')
     .isLength({ max: 50 })
@@ -357,7 +360,14 @@ const userValidators = [
 
 
 router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, res) => {
-  const {firstName, lastName, userName, emailAddress, profilePicURL, password} = req.body;
+  const {
+    firstNameSignup: firstName,
+    lastNameSignup: lastName,
+    userNameSignup: userName,
+    emailAddressSignup: emailAddress,
+    profilePicURLSignup: profilePicURL,
+    passwordSignup: password
+  } = req.body;
 
   const user = User.build({
     firstName,
@@ -376,14 +386,16 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, 
     loginUser(req, res, user);
     res.redirect('/');
   } else {
-    const errors = validatorErrors.array().map((error) => {
+    const signupErrors = validatorErrors.array().map((error) => {
       return error.msg
 
     });
-    res.render('user-signup', {
-      title: "Sign Up",
+    const pugFile = "index"
+    res.render('index', {
+      title: "Home",
       user,
-      errors,
+      pugFile,
+      signupErrors,
       csrfToken: req.csrfToken(),
       req
     })
@@ -392,11 +404,12 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, 
 }))
 
 router.get('/login', csrfProtection, asyncHandler( async(req, res, next) => {
-  res.render('user-login', { title: "Login", csrfToken: req.csrfToken(), req})
+  const pugFile = "user-login"
+  res.render('user-login', { title: "Login", pugFile, csrfToken: req.csrfToken(), req})
 }))
 
 const loginValidators = [
-  check("userName")
+  check("userNameLogin")
     .exists({ checkFalsy: true })
     .withMessage('Please provide a username')
     .custom((value) => {
@@ -408,15 +421,17 @@ const loginValidators = [
           return true;
         });
     }),
-  check('password')
+  check('passwordLogin')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Password')
 ];
 
 router.post('/login', loginValidators, csrfProtection, asyncHandler( async(req, res, next) => {
-  const { userName, password } = req.body;
+  const {
+    userNameLogin: userName,
+    passwordLogin: password } = req.body;
 
-  let errors = [];
+  let loginErrors = [];
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
@@ -431,12 +446,13 @@ router.post('/login', loginValidators, csrfProtection, asyncHandler( async(req, 
       }
 
     }
-    errors.push('That password/username combination does not match our records.')
+
+    loginErrors.push('That password/username combination does not match our records.')
   } else {
-    errors = validatorErrors.array().map((error) => error.msg);
+    loginErrors = validatorErrors.array().map((error) => error.msg);
   }
 
-  res.render('user-login', { title: "login", userName, errors, csrfToken: req.csrfToken(), req})
+  res.render('index', { title: "Home", userName, loginErrors, csrfToken: req.csrfToken(), req})
 }))
 
 router.post('/logout', (req, res) => {

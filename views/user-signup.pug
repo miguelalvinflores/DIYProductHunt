@@ -1,25 +1,49 @@
-extends layout.pug
 include utils.pug
-block content
-    div.modal
+if(signupErrors)
+    div(style="display:block").modal-sign-up.modal
         div.modal-signUp
-           <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+            <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
             div#signup-errors
-                +validationErrorsSummary(errors)
+                +validationErrorsSummary(signupErrors)
                 form(method="post" action="/users/signup")
                     input(type="hidden" name="_csrf" value=csrfToken)
-                    +field("First Name", "firstName", user.firstName)
-                    +field("Last Name", "lastName", user.lastName)
-                    +field("Username", "userName", user.userName)
-                    +field("Email Address", "emailAddress", user.emailAddress, "email")
-                    +field("Profile Pic URL", "profilePicURL", user.profilePicURL)
-                    +field("Password", "password", null, "password")
+                    input(type="hidden" value=pugFile name=pugFile)
+                    +field("First Name", "firstNameSignup", null)
+                    +field("Last Name", "lastNameSignup", null)
+                    +field("Username", "userNameSignup", null)
+                    +field("Email Address", "emailAddressSignup", null, "email")
+                    +field("Profile Pic URL", "profilePicURLSignup", "")
+                    +field("Password", "passwordSignup", null, "password")
                     +field("Confirm Password", "confirmPassword", null, "password")
                     div
                         button(type="submit") Sign Up
                 div#user-signup-demo
                     a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
+                button.signup-cancel Cancel
                 div
                     a(href="/users/login") Already Have An Account?
                     p
-                    a(href="/") Cancel
+else
+    div(style="display:none").modal-sign-up.modal
+        div.modal-signUp
+            <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+            div#signup-errors
+                +validationErrorsSummary(signupErrors)
+                form(method="post" action="/users/signup")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    input(type="hidden" value=pugFile name=pugFile)
+                    +field("First Name", "firstNameSignup", null)
+                    +field("Last Name", "lastNameSignup", null)
+                    +field("Username", "userNameSignup", null)
+                    +field("Email Address", "emailAddressSignup", null, "email")
+                    +field("Profile Pic URL", "profilePicURLSignup", "")
+                    +field("Password", "passwordSignup", null, "password")
+                    +field("Confirm Password", "confirmPassword", null, "password")
+                    div
+                        button(type="submit") Sign Up
+                div#user-signup-demo
+                    a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
+                button.signup-cancel Cancel
+                div
+                    a(href="/users/login") Already Have An Account?
+                    p

@@ -7,12 +7,13 @@ const { requireAuth, restoreUser } = require('../auth');
 const {Sequelize} = require('sequelize');
 const { off } = require('../app');
 
-router.get('/', restoreUser, asyncHandler( async(req, res) => {
+router.get('/', restoreUser, csrfProtection, asyncHandler( async(req, res) => {
     const products = await Product.findAll({ order: [["createdAt", "DESC"]], limit: 10, include: User})
-    res.render('products', { title: 'Products', products, req})
+    const pugFile = 'products'
+    res.render('products', { title: 'Products', pugFile, products, csrfToken: req.csrfToken(), req})
 }))
 
-router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
+router.get('/:id(\\d+$\)', restoreUser, csrfProtection, asyncHandler(async (req, res) => {
     const id = parseInt(req.params.id, 10)
     const product = await Product.findByPk(id,
         {include: Comment}
@@ -25,14 +26,15 @@ router.get('/:id(\\d+$\)', restoreUser,asyncHandler(async (req, res) => {
     const creator = await User.findOne({where: { id: product.userId }});
     const creatorProducts = await Product.findAndCountAll({where: { userId: product.userId }})
 
+    const pugFile = 'product-listing'
 
     if (res.locals.authenticated) {
         const userId  = req.session.auth.userId
         const user = await User.findByPk(userId)
-        res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user, req})
+        res.render('product-listing', { title: `${product.name}`, pugFile, product, csrfToken: req.csrfToken(), comments, creator, creatorProducts, user, req})
     } else {
         const user = "Please sign in to comment"
-        res.render('product-listing', { title: `${product.name}`, product, comments, creator, creatorProducts, user, req})
+        res.render('product-listing', { title: `${product.name}`, pugFile, product, csrfToken: req.csrfToken(), comments, creator, creatorProducts, user, req})
     }
 
 
