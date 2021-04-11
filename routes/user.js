@@ -296,7 +296,7 @@ router.post('/:id(\\d+\)/delete', csrfProtection, restoreUser, asyncHandler(asyn
 //   })
 // }));
 const userValidators = [
-  check("emailAddress")
+  check("emailAddressSignup")
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email')
@@ -310,7 +310,7 @@ const userValidators = [
           }
         });
     }),
-  check("userName")
+  check("userNameSignup")
     .exists({ checkFalsy: true })
     .withMessage('Please provide a username')
     .isLength({ max: 25 })
@@ -323,22 +323,22 @@ const userValidators = [
           }
         });
     }),
-  check("firstName")
+  check("firstNameSignup")
     .exists({ checkFalsy: true })
     .withMessage('Please provide a First mame.')
     .isLength({ max: 30 })
     .withMessage("First name must be 30 characters or less."),
-  check("lastName")
+  check("lastNameSignup")
     .exists({ checkFalsy: true })
     .withMessage('Please provide a Last mame.')
     .isLength({ max: 30 })
     .withMessage("Last name must be 30 characters or less."),
-  check("profilePicURL")
+  check("profilePicURLSignup")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a image URL")
     .matches(/^.+[jpe?g png svg]$/)
     .withMessage("Must be a link to a valid file format (.jpg, .png, .svg)."),
-  check('password')
+  check('passwordSignup')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a value for Password')
     .isLength({ max: 50 })
@@ -360,7 +360,14 @@ const userValidators = [
 
 
 router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, res) => {
-  const {firstName, lastName, userName, emailAddress, profilePicURL, password} = req.body;
+  const {
+    firstNameSignup: firstName,
+    lastNameSignup: lastName,
+    userNameSignup: userName,
+    emailAddressSignup: emailAddress,
+    profilePicURLSignup: profilePicURL,
+    passwordSignup: password
+  } = req.body;
 
   const user = User.build({
     firstName,
