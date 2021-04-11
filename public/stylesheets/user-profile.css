@@ -2,9 +2,10 @@
     position: relative;
     left: 15%;
     top: 150px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 40% 20% 20% 20%;
+    grid-template-rows: repeat(8, 1fr);
+    /* justify-content: space-around; */
     height: 500px;
     width: 900px;
     background-color: white;
@@ -12,37 +13,198 @@
     border-radius:3px;
 }
 
-.profile-user {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+.profile-user__pic-container {
+    grid-row-start: 2;
+    justify-self: center
 }
-
 .profile-user__pic {
     box-sizing: border-box;
     border-radius: 50%;
+    border: 2px solid  #5b2333;
     width: auto;
     margin: 15px;
-    width: 200px;
+    width: 170px;
     /* width of container */
-    height: 200px;
+    height: 170px;
     /* height of container */
     object-fit: cover;
 }
 
-.profile-user__name, .profile-user__username, .profile-user__contact, .profile-user__joinday {
-    margin: 5px;
-}
-
 .profile-user__name {
+    grid-row-start: 3;
+    justify-self: center;
     font-family: Oswald, 'Times New Roman', Times, serif;
     font-size: 30px;
     font-weight: 300;
-    color:rgb(82, 82, 82);
+    color:rgb(96, 96, 96);
     letter-spacing: 2px;
+    align-self: center
 }
 
+.profile-user__username {
+    grid-row-start: 4;
+    justify-self: center;
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-weight: 120px;
+    color:rgb(96, 96, 96);
+}
+
+.profile-user__contact {
+    grid-row-start: 5;
+    justify-self: center;
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-weight: 80;
+    font-size: 20px;
+    color:rgb(116, 116, 116);
+}
+
+.profile-user__joinday {
+    grid-row-start: 6;
+    justify-self: center;
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-weight: 80;
+    font-size: 20px
+}
+
+.profile-user__edit {
+    grid-row-start: 7;
+    justify-self: center;
+}
+
+.products-label {
+    grid-column-start: 4;
+    grid-row-start: 2;
+    align-self: end;
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-weight: 80;
+    font-size: 20px;
+    letter-spacing: 2px;
+    color:rgb(116, 116, 116);
+    margin-bottom: 10px;
+    margin-left: 20px
+}
+
+.create-product-button {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    align-self: end;
+    margin-bottom: 15px;
+}
+.create-product-button a {
+    text-decoration: none;
+}
+
+/* PRODUCTS TABLE */
+
+.profile-products__user-labels span{
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-weight: 100;
+    color:rgb(184, 184, 184);
+    letter-spacing: 1px;
+}
+
+.profile-products__table-container {
+    grid-column-start: 2 span 3;
+    grid-row-start: 3;
+    grid-row-end: 8;
+    /* margin: 15px; */
+    margin-bottom: 50px;
+    overflow: auto;
+    height: 170px;
+    width: 500px;
+    border: 1px solid rgb(136, 136, 136);
+    border-radius: 3px;
+    background-color: white;
+}
+
+.profile-products__table {
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    width: 100%;
+}
+
+.profile-products__table-row {
+    text-align: center;
+}
+
+.profile-products__table__row-head th {
+    height: 30px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: rgb(79, 79, 79);
+}
+
+
+
+.profile-products__table__row-data a{
+    text-decoration: underline;
+    font-family: Oswald, 'Times New Roman', Times, serif;
+    color:rgb(79, 79, 79);
+    font-size: 19px;
+    font-weight: 80;
+    letter-spacing: 1px;
+    padding-left: 10px;
+}
+
+.profile-products__table__row-data a:hover {
+    color: tomato;
+}
+
+.profile-products__table__row-data {
+    justify-content: end;
+    vertical-align: bottom;
+
+}
+
+
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+    border: none;
+}
+
+.table__date {
+    text-align: center;
+    font-weight: 60;
+    font-size: 15px;
+    color: rgb(136, 136, 136);
+}
+
+.table__product-name a{
+    text-align: left;
+}
+
+.profile-delete {
+    grid-row-start: 7;
+    grid-column-start: 4;
+
+}
+
+button {
+    width: 0px;
+}
+
+/* DELETE  PRODUCT CSS */
+button.delete-product {
+    text-align: center;
+    padding-left: 20px;
+    font-size: 12px;
+
+}
+
+.delete-product {
+    color: #5b2333;
+    border: none;
+    background-color: transparent;
+    padding-right: 5px;
+    padding-left: 5px;
+    margin: 0;
+}
+
+button.delete-product:hover {
+    color: tomato;
+}
+
+/* EDIT/DELETE PROFILE MODAL CSS */
 .modal-edit-profile {
     background-color: #fefefe;
     position: relative;
@@ -94,87 +256,12 @@
     font-size: 15px
 }
 
-/* PRODUCTS */
-
-.profile-products {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 35%;
-}
-
-.profile-products__user-labels {
-    display: flex;
-    justify-content: space-between;
-}
-
-.profile-products__user-labels span{
-    font-family: Oswald, 'Times New Roman', Times, serif;
-    font-size: 18px;
-    font-weight: 100;
-    color:rgb(184, 184, 184);
-    letter-spacing: 1px;
-}
-
-.profile-products__table-container {
-    margin: 15px;
-    margin-bottom: 50px;
-    overflow: auto;
-    max-height: 300px;
-    width: 500px;
-    border: 1px solid rgb(184, 184, 184);
-    border-radius: 3px;
-    background-color: white;
-}
-
-.profile-products__table {
-    width: 100%;
-}
-
-.profile-products__table-row {
-    text-align: center;
-}
-
-.profile-products__table__row-data a{
-    text-decoration: none;
-    font-family: Oswald, 'Times New Roman', Times, serif;
-    color: #5b2333;
-}
-
-.profile-products__user-labels>span {
-    align-self: flex-end;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.table__date {
-    text-align: center;
-}
-
-button {
-    width: 0px;
-}
-
-/* DELETE  */
-
 .profile-delete {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 
-.delete-product {
-    color: #5b2333;
-    border: none;
-    background-color: transparent;
-    padding-right: 5px;
-    padding-left: 5px;
-    margin: 0;
-}
-
-.delete-product:hover {
-    color: tomato;
-    background-color:none;
+.profile-delete a {
+    text-decoration: none;
 }
