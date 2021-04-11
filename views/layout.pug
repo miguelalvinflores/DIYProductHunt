@@ -20,6 +20,7 @@ html
           ul.right
             li(class='nav-link')
               form.search(action="/search" method='POST')
+                input(type="hidden" name="_csrf" value=csrfToken)
                 input(class='search-input' id='search' type='search' name='search' placeholder='Search Products...')
                 button(type="submit")#search-btn Search
                 //- label(for='search' class='search-label nav-link'): a(onclick='searchProducts()' href='/search') Search
@@ -29,11 +30,14 @@ html
               li(class='nav-link'): a(href=`/users/${req.session.auth.userId}`): span Welcome #{req.session.auth.firstName}!
               li: form(method="post" action="/users/logout"): button(type="submit" id="log-out-btn") Log Out
             else
-              li(class='nav-link'): a(href="/users/login") Login
-              li(class='nav-link'): a(href="/users/signup") Sign Up
+              li(class='nav-link api-login'): a.api-login Login
+              li(class='nav-link api-login'): a.api-signup Sign Up
 
             li(class='nav-link'): a(href='/about') About
+    include user-signup.pug
+    include user-login.pug
     block content
     block footer
       #footer
         span DIY Product Hunt ©Ben-Laura-Miguel-Natalie
+    script(type='text/javascript' src='/javascripts/navbar.js')

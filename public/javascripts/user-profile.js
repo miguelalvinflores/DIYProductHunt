@@ -94,14 +94,45 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         })
     }
-
+    const userIdData = document.querySelector('#user-id-delete') 
     const deleteProductBtns = document.querySelectorAll('.delete-product')
-    deleteProductBtns.forEach((button, i) => {
-        button.addEventListener('click', async (e) => {
-            e.preventDefault();
-            console.log(button.value)
-        })
-    });
+    const userId = parseInt(userIdData.value)
+    const deleteAndRepopulate = () => {
+        if (deleteProductBtns) {
+            deleteProductBtns.forEach((button, i) => {
+                button.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    const productId = parseInt(button.value)
+                    let updatedProductsData = await fetch(`http://localhost:8080/products/delete`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ userId, id: productId })
+                    })
+                    const updatedProducts = await updatedProductsData.json()
+                    const productTable = document.querySelector('#product-table')
+                    productTable.innerHTML = '';
+                    updatedProducts.updatedProducts.forEach((product, i) => {
+                        let timestamp = Date.parse(product.createdAt)
+                        let date = new Date(timestamp)
+                        const data = `<tr class="profile-products__table__row-data">
+                                    <td><a href="/products/${product.id}">${product.name}</a></td>
+                                    <td class="table__date">${date.toLocaleDateString(undefined)}
+                                    <td>
+                                    <button class="delete-product" id="delete-product-${i}" value="${product.id}">Delete</button>
+                                    </td>
+                                    </td>
+                                    </tr>`
+                        productTable.insertAdjacentHTML('beforeend', data)
+                    });
+
+                    deleteAndRepopulate()
+                })
+            });
+        }
+    }
+    deleteAndRepopulate()
 
 
     const deleteProfileBtn = document.querySelector('.delete-profile-btn')

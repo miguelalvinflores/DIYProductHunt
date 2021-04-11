@@ -17,6 +17,7 @@ body {
   margin-right: 0px
 }
 
+
 .modal {
   display: block;
   /* Hidden by default */
@@ -311,4 +312,14 @@ button#log-out-btn:hover {
   padding-top: 5px;
   padding-bottom: 5px;
   margin-top: 200px;
+
 }
+
+
+
+a {
+  text-decoration: none;
+}
+
+
+
