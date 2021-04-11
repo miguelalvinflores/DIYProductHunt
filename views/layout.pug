@@ -20,6 +20,7 @@ html
           ul.right
             li(class='nav-link')
               form.search(action="/search" method='POST')
+                input(type="hidden" name="_csrf" value=csrfToken)
                 input(class='search-input' id='search' type='search' name='search' placeholder='Search Products...')
                 button(type="submit")#search-btn Search
                 //- label(for='search' class='search-label nav-link'): a(onclick='searchProducts()' href='/search') Search
