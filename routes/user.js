@@ -70,7 +70,7 @@ router.get('/signup', csrfProtection, asyncHandler(async(req, res, next) => {
   res.render("user-signup", {
     title: "Sign Up",
     user,
-    csrfToken: req.csrfToken(), 
+    csrfToken: req.csrfToken(),
     req
   })
 }));
@@ -166,7 +166,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler( async(req, 
       title: "Sign Up",
       user,
       errors,
-      csrfToken: req.csrfToken(), 
+      csrfToken: req.csrfToken(),
       req
     })
   }
