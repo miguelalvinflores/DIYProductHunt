@@ -96,6 +96,11 @@
 
 /* PRODUCTS TABLE */
 
+thead {
+    background-color: rgb(31, 31, 31);
+}
+
+
 .profile-products__user-labels span{
     font-family: Oswald, 'Times New Roman', Times, serif;
     font-size: 18px;
@@ -131,10 +136,12 @@
     height: 30px;
     font-weight: 300;
     letter-spacing: 1px;
-    color: rgb(79, 79, 79);
+    color: white;
 }
 
-
+.profile-products__table__row-head th#unlist-header {
+    color: transparent;
+}
 
 .profile-products__table__row-data a{
     text-decoration: underline;
@@ -202,6 +209,11 @@ button.delete-product {
 
 button.delete-product:hover {
     color: tomato;
+}
+
+#trashcan {
+    height: 20px;
+    width: auto;
 }
 
 /* EDIT/DELETE PROFILE MODAL CSS */
