@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const limit = parseInt(limitData.value)
             console.log(limit)
             e.preventDefault();
-            let newProductsData = await fetch(`http://localhost:8080/products/load`, {
+            let newProductsData = await fetch(`http://diy-product-hunt.herokuapp.com/products/load`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

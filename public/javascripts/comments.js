@@ -14,7 +14,7 @@ document.querySelector('.comment-form').addEventListener('submit', async(event) 
 
     let content = document.querySelector('#content').value;
 
-    let commentData = await fetch(`http://localhost:8080/products/${productId}`, {
+    let commentData = await fetch(`http://diy-product-hunt.herokuapp.com/products/${productId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
