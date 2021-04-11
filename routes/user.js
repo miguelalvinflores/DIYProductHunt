@@ -273,7 +273,7 @@ router.post('/:id(\\d+\)/delete', csrfProtection, restoreUser, asyncHandler(asyn
       } else {
         errors.push('Profile was not deleted because the password you provided did not match our records')
         const date = user.createdAt.toLocaleDateString(undefined)
-        res.render('user-profile', { title: `${user.firstName}`, user, date, errors, req, csrfToken: req.csrfToken() })
+        res.render('user-profile', { title: `${user.firstName}`, user, date, errors, csrfToken: req.csrfToken(), req })
 
       }
     } else {
