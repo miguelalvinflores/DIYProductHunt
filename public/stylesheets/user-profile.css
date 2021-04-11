@@ -165,7 +165,7 @@ thead {
 .profile-products__table__row-data {
     justify-content: end;
     vertical-align: bottom;
-
+    
 }
 
 
@@ -188,7 +188,7 @@ tbody tr:nth-child(odd) {
 .profile-delete {
     grid-row-start: 7;
     grid-column-start: 4;
-
+    
 }
 
 button {
@@ -200,7 +200,7 @@ button.delete-product {
     text-align: center;
     padding-left: 20px;
     font-size: 12px;
-
+    
 }
 
 .delete-product {
