@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+html {
+  background-attachment:fixed;
+  height:100%;
+  background: linear-gradient( #e6dbd8, white);
+}
+
 body {
   font-family: "Source Sans Pro", 'Times New Roman', Times, serif;
   color: rgb(33, 33, 33);
   font-weight: 400;
   line-height: 1em;
-  background-color: #F7F4F3;
+  /* background-color: #F7F4F3; */
+
 }
 
 .modal {
@@ -260,7 +268,7 @@ button#search-btn {
   padding-right: 0;
   /* margin-left: 0; */
   padding-left: 0;
-  margin-right: -15px;
+  margin-right: -1px;
   font-family: Oswald, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-size: 16px;
