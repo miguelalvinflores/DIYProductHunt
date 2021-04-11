@@ -29,11 +29,12 @@ html
               li(class='nav-link'): a(href=`/users/${req.session.auth.userId}`): span Welcome #{req.session.auth.firstName}!
               li: form(method="post" action="/users/logout"): button(type="submit" id="log-out-btn") Log Out
             else
-              li(class='nav-link api-login'): a(href="/users/login") Login
-              li(class='nav-link '): a.api-signup Sign Up
+              li(class='nav-link api-login'): a.api-login Login
+              li(class='nav-link api-login'): a.api-signup Sign Up
 
             li(class='nav-link'): a(href='/about') About
     include user-signup.pug
+    include user-login.pug
     block content
     block footer
       #footer

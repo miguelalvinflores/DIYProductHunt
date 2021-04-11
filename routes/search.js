@@ -6,25 +6,25 @@ const { User, Product, Comment } = require('../db/models')
 const { Sequelize } = require('sequelize')
 const Op = Sequelize.Op;
 
-router.post('/', restoreUser, asyncHandler( async (req, res) => {
+router.post('/', restoreUser, csrfProtection, asyncHandler( async (req, res) => {
     const { search } = req.body
     if (search) {
-        const products = await Product.findAll({ 
-            where: { 
+        const products = await Product.findAll({
+            where: {
                 [Op.or]: {
                     name: { [Op.like]: '%' + search + '%' },
                     summary: { [Op.like]: '%' + search + '%' },
                     description: { [Op.like]: '%' + search + '%' },
                 }
             },
-            order: [["createdAt", "DESC"]], 
+            order: [["createdAt", "DESC"]],
             include: User
         })
         console.log(products)
-        res.render('search', { title: 'Search Results', products, req })
+        res.render('search', { title: 'Search Results', products, csrfToken: req.csrfToken(), req })
     } else {
         const products = [];
-        res.render('search', { title: 'Search Results', products, req })
+        res.render('search', { title: 'Search Results', products, csrfToken: req.csrfToken(), req })
     }
 }))
 
