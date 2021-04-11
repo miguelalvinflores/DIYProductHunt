@@ -1,4 +1,6 @@
+extends layout.pug
 include utils.pug
+block content
     div.modal
         div.modal-signUp
            <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
@@ -17,7 +19,7 @@ include utils.pug
                         button(type="submit") Sign Up
                 div#user-signup-demo
                     a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
-                    button.signup-cancel Cancel
                 div
                     a(href="/users/login") Already Have An Account?
                     p
+                    a(href="/") Cancel
