@@ -17,7 +17,7 @@ block content
                             a(href=`/users/${product.userId}`)   #{creator.firstName} #{creator.lastName}
 
 
-                            div.product-info__description
+                        div#product-info__description
                                 p=product.description
             //- div.product-listing__right
             //-     div.product-listing__buttons
@@ -33,7 +33,7 @@ block content
                         div.submit-container
                             textarea(class = "textarea" name='content' id='content' placeholder='Leave a Comment' required)
                         button#comment-btn(type='submit') Submit
-                a(href=`/products/`): button#return-btn Products
+                //- a(href=`/products/`): button#return-btn Products
 
                 div.new-comments
                 div.old-comments

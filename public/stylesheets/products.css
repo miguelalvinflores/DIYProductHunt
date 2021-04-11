@@ -117,10 +117,9 @@
 
 }
 
-.product-info__description {
+#product-info__description {
     margin: 5px;
-
-
+    font-size: 16px;
 }
 
 .user {
@@ -245,6 +244,7 @@ h1.product-list__label {
 }
 
 .product-listing__createdAt {
+    padding-top: 1em;
 
     font-size: 18px;
 }
