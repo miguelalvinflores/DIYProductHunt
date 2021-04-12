@@ -18,9 +18,8 @@ block content
         p.happy-hunting Happy Hunting!
       div.home-container__buttons
         if req && req.session && req.session.auth
-          div 
+          div
         else
           a(href='/users/demo-login'): button Demo Login
-          button.api-login User Login
-          button.api-signup Sign Up
-
+          //- button.api-login User Login
+          //- button.api-signup Sign Up
