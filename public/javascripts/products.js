@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     </div>
     <div class="product-listing__info">
         <div class="product-info">
-            <div class="product-info__name"><span>${product.name}</span></div>
-            <div class="product-info__creator"><span>Created By:<a href="/users/${product.userId}"> ${product.User.firstName} ${product.User.lastName}</a></span></div>
+            <div class="product-info__name"><span>${product.name}</span>
+            <div class="product-info__creator"><span>Created By:<a href="/users/${product.userId}"> ${product.User.firstName} ${product.User.lastName}</a></span></div></div>
         </div>
         <div>
             <div class="product-info__summary"><span>${product.summary}</span></div>
