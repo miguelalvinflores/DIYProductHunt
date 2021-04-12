@@ -12,7 +12,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-right: 75px;
+    margin-right: 15px;
+    width: 20%;
 }
 
 
