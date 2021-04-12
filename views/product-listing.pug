@@ -28,11 +28,18 @@ block content
 
                 div.comments-container
                     form(class='comment-form' method='post' action=`/products/${product.id}/comments`)
-                        input(class='productId' type='hidden' value = productId)
-                        label(class = 'userName' for='content') #{user.userName}:
-                        div.submit-container
-                            textarea(class = "textarea" name='content' id='content' placeholder='Leave a Comment' required)
-                        button#comment-btn(type='submit') Submit
+                        if req && req.session && req.session.auth && req.session.auth.userId === user.id
+                            input(class='productId' type='hidden' value = productId)
+                            label(class = 'userName' for='content') #{user.userName}:
+                            div.submit-container
+                                textarea(class = "textarea" name='content' id='content' placeholder='Leave a Comment' required)
+                            button#comment-btn(type='submit') Submit
+                        else 
+                            input(class='productId' type='hidden' value = productId)
+                            label(class = 'userName' for='content') Comments:
+                            div.submit-container
+                                textarea(class = "textarea" name='content' id='content' placeholder='Users must be logged in to leave a comment.' required)
+                            button#comment-btn(type='submit' disabled) Submit
 
                 div.new-comments
                 div.old-comments
