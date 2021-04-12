@@ -68,7 +68,7 @@ block content
                         th Created On
                         if req.session.auth.userId === user.id
                             th Unlist
-                tbody
+                tbody#product-table
                     each product, index in user.Products
                         tr.profile-products__table__row-data
                             td.table__product-name: a(href=`/products/${product.id}`) #{product.name}
