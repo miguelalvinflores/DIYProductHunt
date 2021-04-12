@@ -50,15 +50,15 @@ block content
         div.profile-user__joinday
             span Member Since: 🎂 #{date}
         div.profile-user__edit
-            if req.session.auth && req.session.auth.userId === user.id
+            if req && req.session && req.session.auth && req.session.auth.userId === user.id
                 button.edit-profile-btn Edit Profile
         div.products-label
-            if req.session.auth && req.session.auth.userId === user.id
+            if req && req.session && req.session.auth && req.session.auth.userId === user.id
                 span Your Products
             else
                 span #{user.firstName}'s Products
         div.create-product-button
-            if req.session.auth && req.session.auth.userId === user.id
+            if req && req.session && req.session.auth && req.session.auth.userId === user.id
                 a(href=`/products/new-product`): button Create!
         div.profile-products__table-container
             table.profile-products__table
@@ -66,14 +66,14 @@ block content
                     tr.profile-products__table__row-head
                         th Product Name
                         th Created On
-                        if req.session.auth.userId === user.id
+                        if req && req.session && req.session.auth.userId === user.id
                             th Unlist
                 tbody#product-table
                     each product, index in user.Products
                         tr.profile-products__table__row-data
                             td.table__product-name: a(href=`/products/${product.id}`) #{product.name}
                             td.table__date #{product.createdAt.toLocaleDateString(undefined)}
-                            if req.session.auth.userId === user.id
+                            if req && req.session && req.session.auth.userId === user.id
                                 td: button(class="delete-product" id=`delete-product-${index}` value=`${product.id}`): img( id='trashcan' src='https://res.cloudinary.com/dbu0tmeuc/image/upload/v1618169941/trash-can-1778449-1515973_qx4ncv.png')
         div.profile-delete
             if req && req.session && req.session.auth && req.session.auth.userId === user.id

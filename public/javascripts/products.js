@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         load10More.addEventListener('click', async (e) => {
             const limitData = document.querySelector('#count')
             const limit = parseInt(limitData.value)
-            console.log(limit)
+            // console.log(limit)
             e.preventDefault();
             let newProductsData = await fetch(`http://diy-product-hunt.herokuapp.com/products/load`, {
                 method: 'POST',

@@ -21,7 +21,7 @@ router.post('/', restoreUser, csrfProtection, asyncHandler( async (req, res) => 
             order: [["createdAt", "DESC"]],
             include: User
         })
-        console.log(products)
+        // console.log(products)
         res.render('search', { title: 'Search Results', pugFile, products, csrfToken: req.csrfToken(), req })
     } else {
         const products = [];

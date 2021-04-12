@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     emailAddress: emailAddressU,
                     profilePicURL: profilePicURLU
                 } = jsonUser.user
-                console.log(jsonUser)
+                // console.log(jsonUser)
     
                 const fullname = document.querySelector('#full-name');
                 const contact = document.querySelector('#contact');
@@ -74,10 +74,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     
             } else if (jsonUser.userNotFound) {
                 alert('This account does not exist. You are now being redirected to the home page');
-                console.log('redirected')
+                // console.log('redirected')
                 window.location.href = 'http://diy-product-hunt.herokuapp.com/'
             } else {
-                console.log(jsonUser.errors)
+                // console.log(jsonUser.errors)
                 const errorDiv = document.createElement('div');
                 const errorP = document.createElement('p');
                 errorP.innerHTML = 'Please correct the following:'
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     let errorItem = document.createElement('li')
                     errorItem.innerHTML = error;
                     errorList.appendChild(errorItem)
-                    console.log(errorItem)
+                    // console.log(errorItem)
                 });
                 editProfileErrors.appendChild(errorDiv)
             }

@@ -56,7 +56,7 @@ router.put('/:id(\\d+$\)', userValidators,
 
 
                 const passwordMatch = await bcrypt.compare(password, user.hashedPW.toString());
-                console.log(passwordMatch)
+                // console.log(passwordMatch)
 
                 if (passwordMatch) {
                     const updatedUser = await user.update({
@@ -66,7 +66,7 @@ router.put('/:id(\\d+$\)', userValidators,
                         emailAddress,
                         profilePicURL
                     });
-                    console.log(updatedUser)
+                    // console.log(updatedUser)
                     res.json({ user })
                 } else {
                     errors.push('That password does not match our records.')
