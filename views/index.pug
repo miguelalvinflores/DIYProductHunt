@@ -17,7 +17,7 @@ block content
         p Its a place for collectors to find cool products that may not be available on the traditional marketplace.
         p.happy-hunting Happy Hunting!
       div.home-container__buttons
-        if req.session.auth
+        if req && req.session && req.session.auth
           div 
         else
           a(href='/users/demo-login'): button Demo Login

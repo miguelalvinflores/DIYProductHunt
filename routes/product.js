@@ -138,7 +138,7 @@ router.post('/:id(\\d+$\)', restoreUser, requireAuth, asyncHandler(async(req, re
     });
     const date = newComment.createdAt.toLocaleDateString(undefined)
     res.json({newComment, user, date })
-    console.log('NEW COMMENT', newComment)
+    // console.log('NEW COMMENT', newComment)
 
 
 }))
@@ -151,7 +151,7 @@ router.post('/load', asyncHandler( async(req, res) => {
 
 router.post('/delete', asyncHandler( async(req, res) => {
     const { userId, id } = req.body
-    console.log(userId, id)
+    // console.log(userId, id)
     const productDelete = await Product.findByPk(id)
     await Comment.destroy({ where: { productId: id }})
     await productDelete.destroy()

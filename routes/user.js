@@ -52,7 +52,7 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
     return comments[randNum];
   }
   const productCount = await Product.findAndCountAll()
-  console.log(productCount.rows[productCount.count - 1].id)
+  // console.log(productCount.rows[productCount.count - 1].id)
   const newDemoComments = [
     {
       content: commentMaker(),
@@ -186,7 +186,7 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
   const deleteProductsAndComments = () => {
     demoProducts.forEach(async product => {
       const demoProductComments = await Comment.findAll({ where: {productId: product.id }})
-      console.log(demoProductComments)
+      // console.log(demoProductComments)
       demoProductComments.forEach(async comment => {
         await comment.destroy()
       });
@@ -248,13 +248,13 @@ router.get('/:id(\\d+$\)', csrfProtection, restoreUser, asyncHandler(async (req,
 router.post('/:id(\\d+\)/delete', csrfProtection, restoreUser, asyncHandler(async (req, res) => {
 
   const { userIdDelete, passwordDelete } = req.body;
-  console.log(userIdDelete)
+  // console.log(userIdDelete)
 
   let errors = [];
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
-    console.log(2)
+    // console.log(2)
     const user = await User.findOne({
       where: { id: userIdDelete },
       include: {
@@ -263,7 +263,7 @@ router.post('/:id(\\d+\)/delete', csrfProtection, restoreUser, asyncHandler(asyn
     });
 
     if(user) {
-      console.log(3)
+      // console.log(3)
       const passwordMatch = await bcrypt.compare(passwordDelete, user.hashedPW.toString())
       if (passwordMatch) {
         await Comment.destroy({where: { userId: userIdDelete }});
