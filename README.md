@@ -4,7 +4,7 @@
 
 ## Brief Introduction
 
-DIY Product Hunt is a website for creators to share their DIY creations. DIY Product Hunt surfaces the best new products, every day.
+DIY Product Hunt is a website for creators to share their DIY creations.
 It's a place for DIY enthusiasts to share and geek out about their latest creations and foster a client base. As well as a place for collectors to find cool products that may not be avalable on the traditional marketplace.
 
 # Table of contents
