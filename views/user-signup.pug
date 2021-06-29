@@ -15,11 +15,12 @@ if(signupErrors)
                     +field("Profile Pic URL", "profilePicURLSignup", "")
                     +field("Password", "passwordSignup", null, "password")
                     +field("Confirm Password", "confirmPassword", null, "password")
-                    div
-                        button(type="submit") Sign Up
-                div#user-signup-demo
-                    a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
-                button.signup-cancel Cancel
+                    div#signup-btns
+                        div#signup-btn
+                            button(type="submit") Sign Up
+                        div#user-signup-demo
+                            a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
+                        button.signup-cancel Cancel
                 div
                     a(href="/users/login") Already Have An Account?
                     p
@@ -39,11 +40,12 @@ else
                     +field("Profile Pic URL", "profilePicURLSignup", "")
                     +field("Password", "passwordSignup", null, "password")
                     +field("Confirm Password", "confirmPassword", null, "password")
-                    div
-                        button(type="submit") Sign Up
-                div#user-signup-demo
-                    a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
-                button.signup-cancel Cancel
+                    div#signup-btns
+                        div#signup-btn
+                            button(type="submit") Sign Up
+                        div#user-signup-demo
+                            a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
+                        button.signup-cancel Cancel
                 div
                     a(href="/users/login") Already Have An Account?
                     p
