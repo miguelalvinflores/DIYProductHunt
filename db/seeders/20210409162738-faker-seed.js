@@ -7,7 +7,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
 
 
-    const usersArray = [{ userName: "DemoUser", emailAddress: "demo@gmail.com", firstName: "Demo", lastName: "User", profilePicURL: 'http://atlas-content-cdn.pixelsquid.com/stock-images/crash-test-dummy-head-XordO9A-600.jpg', hashedPW: "D756IK", createdAt: faker.date.past(), updatedAt: new Date() }]
+    const usersArray = [{ userName: "DemoUser", emailAddress: "demo@gmail.com", firstName: "Demo", lastName: "User", profilePicURL: 'https://atlas-content-cdn.pixelsquid.com/stock-images/crash-test-dummy-head-XordO9A-600.jpg', hashedPW: "D756IK", createdAt: faker.date.past(), updatedAt: new Date() }]
 
     for (let i = 0; i < 9; i++) {
       const firstName = faker.name.firstName()

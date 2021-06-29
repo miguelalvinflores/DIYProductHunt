@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 profilePicURL,
                 password
             };
-            const updatedUser = await fetch(`http://diy-product-hunt.herokuapp.com/api/users/${userId}`, {
+            const updatedUser = await fetch(`https://localhost:8080/api/users/${userId}/`, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json"
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else if (jsonUser.userNotFound) {
                 alert('This account does not exist. You are now being redirected to the home page');
                 // console.log('redirected')
-                window.location.href = 'http://diy-product-hunt.herokuapp.com/'
+                window.location.href = 'https://localhost:8080/'
             } else {
                 // console.log(jsonUser.errors)
                 const errorDiv = document.createElement('div');
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 button.addEventListener('click', async (e) => {
                     e.preventDefault();
                     const productId = parseInt(button.value)
-                    let updatedProductsData = await fetch(`http://diy-product-hunt.herokuapp.com/products/delete`, {
+                    let updatedProductsData = await fetch(`https://localhost:8080/products/delete/`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

@@ -319,8 +319,11 @@ button#log-out-btn:hover {
 
 #signup-btns {
   display: flex;
-  flex-direction: row;
 }
+
+#signup-btns > div, #log-in-btns > div {
+  padding: 5%
+}  
 
 .home-button {
   margin: 20px;
