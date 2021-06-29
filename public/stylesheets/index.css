@@ -58,22 +58,37 @@ body {
 }
 
 .modal-login {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   background-color: #fefefe;
   position: relative;
   bottom: 15%;
   margin: 15% auto;
   /* 15% from the top and centered */
-  padding: 20px;
+  padding-top: 1.8em;
+  padding-bottom: 4em;
   border: 1px solid #888;
   width: 425px;
   height: 300px;
   /* Could be more or less, depending on screen size */
-  /* justify-content: center;
-    align-items: center; */
   overflow: auto;
   /* Enable scroll if needed */
-  /* position: absolute; */
   box-shadow: 2px 3px 4px #5b2333;
+}
+
+.modal-login input {
+  width: 10em;
+}
+
+label.form-label {
+  width: 5em;
+}
+
+.diy-logo {
+  width: 9em;
 }
 
 .form-label.modal-content {
@@ -334,11 +349,32 @@ button#log-out-btn:hover {
 
 #log-in-btns {
   display: flex;
+
+}
+
+#log-in-btns button {
+  margin-top: 2em;
+  margin-right: 1em;
+  background-color: #5b2333;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 10px;
 }
 
 #signup-btns {
   display: flex;
   flex-direction: row;
+}
+
+div.no-acct-container {
+ margin-top: 1em;
+}
+
+.no-acct {
+  color: tomato;
+
+  font-size: 1.5em;
 }
 
 .home-button {
