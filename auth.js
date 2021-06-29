@@ -9,6 +9,8 @@ const loginUser = (req, res, user) => {
         userName: user.userName,
         firstName: user.firstName
     }
+    console.log(req)
+    console.log(res)
 }
 
 const logoutUser = (req, res) => {

@@ -10,6 +10,7 @@ const faker = require('faker')
 
 router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
   const demoUser = await User.findOne({ where: { userName: "DemoUser"}});
+  loginUser(req, res, demoUser);
   const demoUserId = demoUser.id
   const demoProducts = await Product.findAll({ where: { userId: demoUserId}})
   const newDemoProducts = [
@@ -228,7 +229,6 @@ router.get('/demo-login', csrfProtection, asyncHandler(async (req,res) => {
     //   }, 10000)
     //   return
     //   }).catch(e => console.log(e))
-  loginUser(req, res, demoUser);
   res.redirect('/products');
 }))
 
