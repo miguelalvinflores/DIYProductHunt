@@ -2,7 +2,7 @@ include utils.pug
 if(signupErrors)
     div(style="display:block").modal-sign-up.modal
         div.modal-signUp
-            <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+           <img class='diy-logo' src="https://res.cloudinary.com/dbu0tmeuc/image/upload/v1618176454/diy-logo-2_wpov67.png" alt="logo" />
             div#signup-errors
                 +validationErrorsSummary(signupErrors)
                 form(method="post" action="/users/signup")
@@ -21,13 +21,13 @@ if(signupErrors)
                         div#user-signup-demo
                             a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
                         button.signup-cancel Cancel
-                div
-                    a(href="/users/login") Already Have An Account?
+                div.no-acct-container
+                    a(class='no-acct' href="/users/signup") Don't Have An Account?
                     p
 else
     div(style="display:none").modal-sign-up.modal
         div.modal-signUp
-            <a href="https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_50/v1617760512/logo_iyted7.png"><img src=https://res.cloudinary.com/dse6ebwba/image/upload/c_scale,w_100/v1617760512/logo_iyted7.png alt="logo" border="0"></a>
+           <img class='diy-logo' src="https://res.cloudinary.com/dbu0tmeuc/image/upload/v1618176454/diy-logo-2_wpov67.png" alt="logo" />
             div#signup-errors
                 +validationErrorsSummary(signupErrors)
                 form(method="post" action="/users/signup")
@@ -46,6 +46,6 @@ else
                         div#user-signup-demo
                             a(href="/users/demo-login"): button#user-signup-demo-btn Demo Login
                         button.signup-cancel Cancel
-                div
-                    a(href="/users/login") Already Have An Account?
+                div.no-acct-container
+                    a(class='no-acct' href="/users/signup") Don't Have An Account?
                     p

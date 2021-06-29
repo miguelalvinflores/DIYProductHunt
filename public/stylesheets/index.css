@@ -38,23 +38,38 @@ body {
 
 /* Modal Content/Box */
 
+
+
 .modal-signUp {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   background-color: #fefefe;
   position: relative;
   bottom: 15%;
   margin: 15% auto;
   /* 15% from the top and centered */
-  padding: 20px;
+  padding-top: 1.8em;
+  padding-bottom: 4em;
   border: 1px solid #888;
   width: 425px;
   height: 550px;
   /* Could be more or less, depending on screen size */
-  /* justify-content: center;
-    align-items: center; */
   overflow: auto;
   /* Enable scroll if needed */
   box-shadow: 2px 3px 4px #5b2333;
-  /* position: absolute; */
+}
+
+#signup-btns button {
+  margin-top: 2em;
+  margin: .5em;
+  background-color: #5b2333;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 10px;
 }
 
 .modal-login {
@@ -85,6 +100,7 @@ body {
 
 label.form-label {
   width: 5em;
+  margin-right: .5em;
 }
 
 .diy-logo {
@@ -144,6 +160,7 @@ label.form-label {
   border-radius: 5px;
   min-width: 50%;
   margin-bottom: 1em;
+  width: 12em;
   /* margin: 0 auto; */
 }
 
