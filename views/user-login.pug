@@ -29,11 +29,12 @@ else
                     input(type="hidden" value=pugFile name=pugFile)
                     +field("User Name", "userNameLogin", null)
                     +field("Password", "passwordLogin", null, "password")
-                    div#log-in-btn
-                        button(type="submit") Log In
-                div#user-login-demo
-                    a(href='/users/demo-login'): button#user-login-demo-btn Demo Login
-                button.login-cancel Cancel
+                    div#log-in-btns
+                        div#log-in-btn
+                            button(type="submit") Log In
+                        div#user-login-demo
+                            a(href='/users/demo-login'): button#user-login-demo-btn Demo Login
+                        button.login-cancel Cancel
                 div
                     a(href="/users/signup") Don't Have An Account?
                     p

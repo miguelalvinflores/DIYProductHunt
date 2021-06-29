@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-
 html {
-  background-attachment:fixed;
-  height:100%;
+  background-attachment: fixed;
+  height: 100%;
   background: linear-gradient( #fdf0e7, white);
   background-repeat: no-repeat;
 }
@@ -17,7 +16,6 @@ body {
   margin-left: 0px;
   margin-right: 0px
 }
-
 
 .modal {
   display: block;
@@ -190,7 +188,7 @@ button:hover {
   font-size: 10px
 }
 
-#user-login-demo {
+/* #user-login-demo {
   position: absolute;
   align-self: flex-end;
   right: 22px;
@@ -198,12 +196,12 @@ button:hover {
 }
 
 #user-login-demo-btn {
-  /* width: 300px;
-  height: 30px; */
+  width: 300px;
+  height: 30px;
   height: 56.73px;
-}
+} */
 
-#user-signup-demo {
+/* #user-signup-demo {
   position: absolute;
   align-self: flex-end;
   right: 22px;
@@ -211,10 +209,10 @@ button:hover {
 }
 
 #user-signup-demo-btn {
-  /* width: 300px;
-  height: 30px; */
+  width: 300px;
+  height: 30px;
   height: 56.73px;
-}
+} */
 
 /* HOME  */
 
@@ -229,7 +227,7 @@ button:hover {
   /* border: 3px solid #999999;
   border-radius: 15px; */
   box-shadow: 0px 6px 8px 2px rgb(237, 237, 237);
-  border-radius:3px;
+  border-radius: 3px;
   width: 80%;
   background-color: white;
   align-items: center;
@@ -276,6 +274,7 @@ p.happy-hunting {
 .home-container__buttons {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 button#search-btn {
@@ -291,7 +290,6 @@ button#search-btn {
   font-family: Oswald, 'Times New Roman', Times, serif;
   font-weight: 400;
   font-size: 16px;
-
 }
 
 button#search-btn:hover {
@@ -315,9 +313,17 @@ button#log-out-btn:hover {
   color: tomato;
 }
 
+#log-in-btns {
+  display: flex;
+}
+
+#signup-btns {
+  display: flex;
+  flex-direction: row;
+}
+
 .home-button {
   margin: 20px;
-
 }
 
 #footer {
@@ -334,10 +340,7 @@ button#log-out-btn:hover {
   padding-top: 5px;
   padding-bottom: 5px;
   margin-top: 200px;
-
 }
-
-
 
 a {
   text-decoration: none;

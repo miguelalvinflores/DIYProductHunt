@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const loginNavBtn = document.querySelector(".api-login");
     const loginCancelBtn = document.querySelector(".login-cancel");
+    const demoLoginBtn = document.querySelector("#user-login-demo-btn");
+    const demoSignupBtn = document.querySelector("#user-signup-demo-btn");
 
     const modalLogin = document.querySelector(".modal-log-in");
     // console.log("modal Login:", modalLogin)
@@ -38,6 +40,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         loginCancelBtn.addEventListener('click', (e) => {
             e.preventDefault();
             modalLogin.style.display = "none"
+        })
+    }
+
+    if (demoLoginBtn) {
+        demoLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            window.location.href = "/users/demo-login"
+        })
+    }
+
+    if (demoSignupBtn) {
+        demoSignupBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            window.location.href = "/users/demo-login"
         })
     }
 
