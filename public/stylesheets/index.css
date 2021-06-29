@@ -236,6 +236,7 @@ button.demo-login:hover {
 
 .home {
   display: flex;
+  padding-bottom: 20px;
 }
 
 .home-container {
@@ -349,7 +350,7 @@ button#log-out-btn:hover {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(88, 35, 51, .5);
+  background-color: rgb(171 145 153);
   text-align: center;
   color: white;
   height: 15px;
@@ -358,6 +359,11 @@ button#log-out-btn:hover {
   padding-top: 5px;
   padding-bottom: 5px;
   margin-top: 200px;
+  z-index: 1000;
+}
+
+#footer a {
+  color: white;
 }
 
 a {
