@@ -2,6 +2,7 @@
 
 # DIY Product Hunt
 
+
 ## Brief Introduction
 
 DIY Product Hunt is a website for creators to share their DIY creations.
@@ -33,6 +34,7 @@ It's a place for DIY enthusiasts to share and geek out about their latest creati
 <!-- Insert Usage GIF here -->
 
 ## Technologies
+
 
 DIY Product Hunt is built using the following stack & libraries:
 
