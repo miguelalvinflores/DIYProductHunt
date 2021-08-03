@@ -2,7 +2,6 @@
 
 # DIY Product Hunt
 
-
 ## Brief Introduction
 
 DIY Product Hunt is a website for creators to share their DIY creations.
